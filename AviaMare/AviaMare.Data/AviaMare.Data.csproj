@@ -23,9 +23,4 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AviaMare.Data.Interface\AviaMare.Data.Interface.csproj" />
-    <ProjectReference Include="..\Enums\Enums.csproj" />
-  </ItemGroup>
-
 </Project>
