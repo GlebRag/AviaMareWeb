@@ -1,0 +1,31 @@
+﻿@using AviaMare.Models.Admin
+@model AdminUserViewModel
+
+<div class="users">
+    <h1>Users</h1>
+    @foreach (var user in Model.Users)
+    {
+        <div>
+            @user.Name
+            @foreach (var role in user.Roles)
+            {
+                <span class="role">@role</span>
+            }
+
+            <form action="/Admin/UpdateRole">
+                @Html.Hidden("userId", user.Id)
+
+                <span class="roles">
+                    @foreach (var role in Model.Roles)
+                    {
+                        <label class="role">
+                            @role.Text
+                            <input name="role" type="checkbox" value="@role.Value" />
+                        </label>
+                    }
+                    <button>Обновить роль</button>
+                </span>
+            </form>
+        </div>
+    }
+</div>

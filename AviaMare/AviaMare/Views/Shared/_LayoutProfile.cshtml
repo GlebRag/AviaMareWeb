@@ -1,0 +1,47 @@
+@using AviaMare.Models.Home
+@model IndexViewModel
+@using AviaMare.Services
+@inject AuthService authService
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile</title>
+    <link href="~/css/Ecology/reset.css" rel="stylesheet" />
+    <link href="~/css/Ecology/profile.css" rel="stylesheet" />
+</head>
+<body>
+<header class="head-page">
+    <div class="logo">
+        <img src="~/images/Ecology/logotip.JPG" alt="logo" />
+    </div>
+    <div>Welcome @(string.IsNullOrEmpty(Model.UserName) ? "Гость" : Model.UserName)</div>
+    <div class="reg-auth">
+        <ul class="navbar-nav flex-grow-1">
+            @if (!User.Identity?.IsAuthenticated ?? false)
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Registration</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Exit</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="return-home">
+        <ul>
+            <li><a class="return-home" href="/"></a></li>
+        </ul>
+    </div>
+</header>
+<div class="user-content">
+    @RenderBody()
+</div>
+</body>
+</html>

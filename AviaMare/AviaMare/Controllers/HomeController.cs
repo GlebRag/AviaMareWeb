@@ -1,21 +1,30 @@
-using AviaMare.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using AviaMare.Models;
+using AviaMare.Models.Home;
+using AviaMare.Services;
 
 namespace AviaMare.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private AuthService _authService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(AuthService authService)
         {
-            _logger = logger;
+            _authService = authService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var viewModel = new IndexViewModel();
+
+            var userName = _authService.GetName();
+
+            viewModel.UserName = userName;
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
@@ -23,10 +32,9 @@ namespace AviaMare.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Forbidden()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }
