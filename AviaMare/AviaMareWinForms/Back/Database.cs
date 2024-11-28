@@ -34,26 +34,26 @@ namespace AviaMareWinForms
 
         static public List<Ticket> tickets = new List<Ticket>
         {
-            new Ticket(1, "Paris", "New York", 5830, planes[0], 7, 1200),
-            new Ticket(2, "London", "Tokyo", 9560, planes[1], 12, 1500),
-            new Ticket(3, "Sydney", "Los Angeles", 12055, planes[2], 14, 2000),
-            new Ticket(4, "Moscow", "Dubai", 3700, planes[3], 5, 600),
-            new Ticket(5, "Berlin", "Rome", 1180, planes[4], 2, 300),
-            new Ticket(6, "Madrid", "Lisbon", 625, planes[5], 1, 150),
-            new Ticket(7, "Toronto", "Vancouver", 3360, planes[6], 5, 500),
-            new Ticket(8, "Beijing", "Shanghai", 1080, planes[7], 2, 250),
-            new Ticket(9, "Cape Town", "Johannesburg", 1270, planes[8], 2, 200),
-            new Ticket(10, "Rio de Janeiro", "Buenos Aires", 1960, planes[9], 3, 400),
-            new Ticket(11, "Singapore", "Bangkok", 1430, planes[10], 2, 300),
-            new Ticket(12, "Seoul", "Hong Kong", 2070, planes[11], 3, 400),
-            new Ticket(13, "Delhi", "Kolkata", 1310, planes[12], 2, 250),
-            new Ticket(14, "New York", "Chicago", 1150, planes[13], 2, 250),
-            new Ticket(15, "Miami", "Havana", 370, planes[14], 1, 150),
-            new Ticket(16, "San Francisco", "Seattle", 1300, planes[15], 2, 200),
-            new Ticket(17, "Melbourne", "Auckland", 2620, planes[16], 4, 500),
-            new Ticket(18, "Dubai", "Istanbul", 3040, planes[17], 5, 700),
-            new Ticket(19, "Cairo", "Athens", 1120, planes[18], 2, 250),
-            new Ticket(20, "Tokyo", "Seoul", 1200, planes[19], 2, 300)
+            new Ticket(1, "Paris", "New York", 5830, planes[0], 7, 1200, new DateTime(2024, 11, 30, 10, 0, 0), new DateTime(2024, 11, 30, 17, 0, 0)),
+            new Ticket(2, "London", "Tokyo", 9560, planes[1], 12, 1500, new DateTime(2024, 12, 1, 8, 0, 0), new DateTime(2024, 12, 1, 20, 0, 0)),
+            new Ticket(3, "Sydney", "Los Angeles", 12055, planes[2], 14, 2000, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 6, 4, 0, 0)),
+            new Ticket(4, "Moscow", "Dubai", 3700, planes[3], 5, 600, new DateTime(2024, 12, 4, 16, 0, 0), new DateTime(2024, 12, 4, 21, 0, 0)),
+            new Ticket(5, "Berlin", "Rome", 1180, planes[4], 2, 300, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0)),
+            new Ticket(6, "Madrid", "Lisbon", 625, planes[5], 1, 150, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 17, 0, 0)),
+            new Ticket(7, "Toronto", "Vancouver", 3360, planes[6], 5, 500, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 21, 0, 0)),
+            new Ticket(8, "Beijing", "Shanghai", 1080, planes[7], 2, 250, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0)),
+            new Ticket(9, "Cape Town", "Johannesburg", 1270, planes[8], 2, 200, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0)),
+            new Ticket(10, "Rio de Janeiro", "Buenos Aires", 1960, planes[9], 3, 400, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 19, 0, 0)),
+            new Ticket(11, "Singapore", "Bangkok", 1430, planes[10], 2, 300, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0)),
+            new Ticket(12, "Seoul", "Hong Kong", 2070, planes[11], 3, 400, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 19, 0, 0)),
+            new Ticket(13, "Delhi", "Kolkata", 1310, planes[12], 2, 250, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0)),
+            new Ticket(14, "New York", "Chicago", 1150, planes[13], 2, 250, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0)),
+            new Ticket(15, "Miami", "Havana", 370, planes[14], 1, 150, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 17, 0, 0)),
+            new Ticket(16, "San Francisco", "Seattle", 1300, planes[15], 2, 200, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0)),
+            new Ticket(17, "Melbourne", "Auckland", 2620, planes[16], 4, 500, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 20, 0, 0)),
+            new Ticket(18, "Dubai", "Istanbul", 3040, planes[17], 5, 700, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 21, 0, 0)),
+            new Ticket(19, "Cairo", "Athens", 1120, planes[18], 2, 250, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0)),
+            new Ticket(20, "Tokyo", "Seoul", 1200, planes[19], 2, 300, new DateTime(2024, 12, 5, 16, 0, 0), new DateTime(2024, 12, 5, 18, 0, 0))
         };
     }
 }

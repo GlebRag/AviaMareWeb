@@ -15,6 +15,8 @@ namespace AviaMareWinForms
         private Plane usedPlane;
         private int time;
         private int cost;
+        private DateTime takeOffTime;
+        private DateTime landingTime;
 
         public int Id
         {
@@ -58,7 +60,19 @@ namespace AviaMareWinForms
             set { cost = value; }
         }
 
-        public Ticket(int newId, string newDestination, string newDeparture, int newDistance, Plane newPlane, int newTime, int newCost)
+        public DateTime TakeOffTime
+        {
+            get { return takeOffTime; }
+            set { takeOffTime = value; }
+        }
+
+        public DateTime LandingTime
+        {
+            get { return landingTime; }
+            set { landingTime = value; }
+        }
+
+        public Ticket(int newId, string newDestination, string newDeparture, int newDistance, Plane newPlane, int newTime, int newCost, DateTime newTakeOffTime, DateTime newLandingTime)
         {
             this.Id = newId;
             this.Destination = newDestination;
@@ -67,6 +81,8 @@ namespace AviaMareWinForms
             this.UsedPlane = newPlane;
             this.Time = newTime;
             this.Cost = newCost;
+            this.LandingTime = newLandingTime;
+            this.TakeOffTime = newTakeOffTime;
         }
     }
 }
