@@ -5,6 +5,13 @@ VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AviaMare", "AviaMare\AviaMare.csproj", "{B4AF27E7-39DC-45B7-AD54-102E76BC7A6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enums", "Enums\Enums.csproj", "{89B5A9E5-06FD-4FFA-83C2-683FBAEB2FB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AviaMare.Data", "AviaMare.Data\AviaMare.Data.csproj", "{A14B3A20-342D-4A11-836A-6A424C418F87}"
+	ProjectSection(ProjectDependencies) = postProject
+		{89B5A9E5-06FD-4FFA-83C2-683FBAEB2FB8} = {89B5A9E5-06FD-4FFA-83C2-683FBAEB2FB8}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,14 @@ Global
 		{B4AF27E7-39DC-45B7-AD54-102E76BC7A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4AF27E7-39DC-45B7-AD54-102E76BC7A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4AF27E7-39DC-45B7-AD54-102E76BC7A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B5A9E5-06FD-4FFA-83C2-683FBAEB2FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B5A9E5-06FD-4FFA-83C2-683FBAEB2FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B5A9E5-06FD-4FFA-83C2-683FBAEB2FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B5A9E5-06FD-4FFA-83C2-683FBAEB2FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A14B3A20-342D-4A11-836A-6A424C418F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A14B3A20-342D-4A11-836A-6A424C418F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A14B3A20-342D-4A11-836A-6A424C418F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A14B3A20-342D-4A11-836A-6A424C418F87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
