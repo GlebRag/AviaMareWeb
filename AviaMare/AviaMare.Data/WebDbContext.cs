@@ -11,6 +11,8 @@ namespace AviaMare.Data
 
         public const string CONNECTION_STRING = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = AviaMare; Integrated Security = True;";
         public DbSet<UserData> Users { get; set; }
+        public DbSet<PlaneData> Planes { get; set; }
+        public DbSet<TicketData> Tickets { get; set; }
 
         public WebDbContext() { }
 
