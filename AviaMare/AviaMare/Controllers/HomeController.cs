@@ -4,15 +4,28 @@ using System.Diagnostics;
 using AviaMare.Models;
 using AviaMare.Models.Home;
 using AviaMare.Services;
+using AviaMare.Data.Interface.Repositories;
+using AviaMare.Data.Repositories;
+using AviaMare.Data;
+using Microsoft.AspNetCore.Hosting;
+using AviaMare.Data.Models;
 
 namespace AviaMare.Controllers
 {
     public class HomeController : Controller
     {
         private AuthService _authService;
-
-        public HomeController(AuthService authService)
+        private ITicketRepositoryReal _ticketRepository;
+        private IUserRepositryReal _userRepositryReal;
+        private WebDbContext _webDbContext;
+        public HomeController(ITicketRepositoryReal ticketRepository,
+            WebDbContext webDbContext,
+            IUserRepositryReal userRepositryReal,
+            AuthService authService)
         {
+            _ticketRepository = ticketRepository;
+            _webDbContext = webDbContext;
+            _userRepositryReal = userRepositryReal;
             _authService = authService;
         }
 
@@ -20,11 +33,48 @@ namespace AviaMare.Controllers
         {
             var viewModel = new IndexViewModel();
 
-            var userName = _authService.GetName();
+            if (!_ticketRepository.Any())
+            {
+                GenerateDefaultTicket();
+            }
 
-            viewModel.UserName = userName;
+            var ticketsFromDb = _ticketRepository.GetAll();
+            var ticketsViewModels = ticketsFromDb
+                .Select(dbTicket =>
+                    new TicketViewModel
+                    {
+                        Id = dbTicket.Id,
+                        Destination = dbTicket.Destination,
+                        Departure = dbTicket.Departure,
+                        IdPlane = dbTicket.IdPlane,
+                        Time = dbTicket.Time,
+                        Cost = dbTicket.Cost,
+                        TakeOffTime = dbTicket.TakeOffTime,
+                        LandingTime = dbTicket.LandingTime,
+                    }
+                )
+                .ToList();  
 
-            return View(viewModel);
+            return View(ticketsViewModels);
+        }
+
+        private void GenerateDefaultTicket()
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                var dataModel = new TicketData
+                {
+                    Destination = "1",
+                    Departure = "2",
+                    IdPlane = 3,
+                    Time = 4,
+                    Cost = 5,
+                    TakeOffTime = DateTime.Now,
+                    LandingTime = DateTime.Now,
+                };
+
+                _ticketRepository.Add(dataModel);
+            }
         }
 
         public IActionResult Privacy()

@@ -1,9 +1,6 @@
 ﻿@using AviaMare.Models.Home
-@model IndexViewModel
+@model List<TicketViewModel>
 
-<div class="text-center">
-    <div>Привет @(string.IsNullOrEmpty(Model.UserName) ? "Гость" : Model.UserName)</div>
-</div>
 <style>
     .ticket-section {
         margin: 0;
@@ -99,7 +96,40 @@
         </div>
     } -->
 
-    <div class="ticket">
+    <div class="tickets">
+        @foreach (var ticket in Model)
+        {
+            <div class="ticket">
+                <div class="ticket-header">
+                    <h2>От: @ticket.Departure — До: @ticket.Destination</h2>
+                </div>
+                <div class="ticket-body">
+                    <div class="info">
+                        <div>Время в полёте:</div>
+                        <span>@ticket.Time</span>
+                    </div>
+                    <div class="info">
+                        <div>Время вылета:</div>
+                        <span>@ticket.TakeOffTime</span>
+                    </div>
+                    <div class="info">
+                        <div>Время прилёта:</div>
+                        <span>@ticket.LandingTime</span>
+                    </div>
+                    <div class="info">
+                        <div>Самолёт:</div>
+                        <span>@ticket.IdPlane</span>
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <div class="price">@ticket.Cost</div>
+                    <div class="seats">Мест осталось: нет данных</div>
+                </div>
+            </div>
+        }
+    </div>
+
+   @*  <div class="ticket">
         <div class="ticket-header">
             <h2>От: Moskow — До: NY</h2>
         </div>
@@ -125,86 +155,5 @@
             <div class="price">250 $</div>
             <div class="seats">Мест осталось: 5</div>
         </div>
-    </div>
-    <div class="ticket">
-        <div class="ticket-header">
-            <h2>От: Moskow — До: NY</h2>
-        </div>
-        <div class="ticket-body">
-            <div class="info">
-                <div>Время в полёте:</div>
-                <span>5h</span>
-            </div>
-            <div class="info">
-                <div>Время вылета:</div>
-                <span>12:00</span>
-            </div>
-            <div class="info">
-                <div>Время прилёта:</div>
-                <span>17:00</span>
-            </div>
-            <div class="info">
-                <div>Самолёт:</div>
-                <span>Boeing 777</span>
-            </div>
-        </div>
-        <div class="ticket-footer">
-            <div class="price">250 $</div>
-            <div class="seats">Мест осталось: 5</div>
-        </div>
-    </div>
-    <div class="ticket">
-        <div class="ticket-header">
-            <h2>От: Moskow — До: NY</h2>
-        </div>
-        <div class="ticket-body">
-            <div class="info">
-                <div>Время в полёте:</div>
-                <span>5h</span>
-            </div>
-            <div class="info">
-                <div>Время вылета:</div>
-                <span>12:00</span>
-            </div>
-            <div class="info">
-                <div>Время прилёта:</div>
-                <span>17:00</span>
-            </div>
-            <div class="info">
-                <div>Самолёт:</div>
-                <span>Boeing 777</span>
-            </div>
-        </div>
-        <div class="ticket-footer">
-            <div class="price">250 $</div>
-            <div class="seats">Мест осталось: 5</div>
-        </div>
-    </div>
-    <div class="ticket">
-        <div class="ticket-header">
-            <h2>От: Moskow — До: NY</h2>
-        </div>
-        <div class="ticket-body">
-            <div class="info">
-                <div>Время в полёте:</div>
-                <span>5h</span>
-            </div>
-            <div class="info">
-                <div>Время вылета:</div>
-                <span>12:00</span>
-            </div>
-            <div class="info">
-                <div>Время прилёта:</div>
-                <span>17:00</span>
-            </div>
-            <div class="info">
-                <div>Самолёт:</div>
-                <span>Boeing 777</span>
-            </div>
-        </div>
-        <div class="ticket-footer">
-            <div class="price">250 $</div>
-            <div class="seats">Мест осталось: 5</div>
-        </div>
-    </div>
+    </div> *@
 </div>
