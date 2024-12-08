@@ -1,6 +1,108 @@
 ﻿@using AviaMare.Models.Home
-@model IndexViewModel
-
-<div class="text-center">
-    <div>Привет @(string.IsNullOrEmpty(Model.UserName) ? "Гость" : Model.UserName)</div>
+<div className="w-[1200px] min-h-[800px] bg-white shadow-lg rounded-lg">
+    <div className="px-8 py-10">
+        <section className="flex gap-8 items-start">
+            <div className="basis-1/3">
+                <form className="bg-orange-50 p-6 rounded-md mb-6">
+                    <h2 className="text-orange-950 font-bold text-lg mb-4">Поиск рейсов</h2>
+                    <div className="flex flex-col gap-4">
+                        <label className="flex flex-col">
+                            <span className="text-neutral-950">Откуда</span>
+                            <input type="text"
+                                   placeholder="например, Нью-Йорк"
+                                   className="border border-orange-300 p-2 rounded-md" />
+                        </label>
+                        <label className="flex flex-col">
+                            <span className="text-neutral-950">Куда</span>
+                            <input type="text"
+                                   placeholder="например, Лос-Анджелес"
+                                   className="border border-orange-300 p-2 rounded-md" />
+                        </label>
+                        <label className="flex flex-col">
+                            <span className="text-neutral-950">Дата</span>
+                            <input type="date"
+                                   className="border border-orange-300 p-2 rounded-md" />
+                        </label>
+                        <button className="bg-orange-500 text-white py-2 px-4 rounded-md">
+                            Найти
+                        </button>
+                    </div>
+                </form>
+                <form className="bg-orange-50 p-6 rounded-md">
+                    <h2 className="text-orange-950 font-bold text-lg mb-4">Фильтр рейсов</h2>
+                    <div className="flex flex-col gap-4">
+                        <label className="flex flex-col">
+                            <span className="text-neutral-950">Ценовой диапазон</span>
+                            <input type="range"
+                                   min="100"
+                                   max="1000"
+                                   className="w-full" />
+                        </label>
+                        <label className="flex flex-col">
+                            <span className="text-neutral-950">Удобная дата</span>
+                            <input type="date"
+                                   className="border border-orange-300 p-2 rounded-md" />
+                        </label>
+                        <button className="bg-orange-500 text-white py-2 px-4 rounded-md">
+                            Применить фильтры
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div className="basis-2/3">
+                <h2 className="text-orange-950 font-bold text-lg mb-4">Популярные направления</h2>
+                <div className="grid grid-cols-3 gap-6 mb-8">
+                    <div className="bg-orange-100 p-4 rounded-md">
+                        <img src="https://tools-api.webcrumbs.org/image-placeholder/150/100/travel/5"
+                             alt="destination"
+                             className="w-full h-[100px] object-cover rounded-md" />
+                        <h3 className="text-neutral-950 mt-2 font-medium">Париж</h3>
+                    </div>
+                    <div className="bg-orange-100 p-4 rounded-md">
+                        <img src="https://tools-api.webcrumbs.org/image-placeholder/150/100/travel/6"
+                             alt="destination"
+                             className="w-full h-[100px] object-cover rounded-md" />
+                        <h3 className="text-neutral-950 mt-2 font-medium">Токио</h3>
+                    </div>
+                    <div className="bg-orange-100 p-4 rounded-md">
+                        <img src="https://tools-api.webcrumbs.org/image-placeholder/150/100/travel/7"
+                             alt="destination"
+                             className="w-full h-[100px] object-cover rounded-md" />
+                        <h3 className="text-neutral-950 mt-2 font-medium">Дубай</h3>
+                    </div>
+                </div>
+                <h2 className="text-orange-950 font-bold text-lg mb-4">Лучшие предложения</h2>
+                <div className="grid grid-cols-2 gap-6">
+                    <div className="bg-orange-100 p-4 rounded-md">
+                        <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/1"
+                             alt="destination"
+                             className="w-full h-[150px] object-cover rounded-md" />
+                        <h3 className="text-neutral-950 mt-2 font-medium">Нью-Йорк — Париж</h3>
+                        <p className="text-neutral-700">От $450</p>
+                    </div>
+                    <div className="bg-orange-100 p-4 rounded-md">
+                        <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/2"
+                             alt="destination"
+                             className="w-full h-[150px] object-cover rounded-md" />
+                        <h3 className="text-neutral-950 mt-2 font-medium">Лондон — Токио</h3>
+                        <p className="text-neutral-700">От $700</p>
+                    </div>
+                    <div className="bg-orange-100 p-4 rounded-md">
+                        <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/3"
+                             alt="destination"
+                             className="w-full h-[150px] object-cover rounded-md" />
+                        <h3 className="text-neutral-950 mt-2 font-medium">Сидней — Дубай</h3>
+                        <p className="text-neutral-700">От $600</p>
+                    </div>
+                    <div className="bg-orange-100 p-4 rounded-md">
+                        <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/4"
+                             alt="destination"
+                             className="w-full h-[150px] object-cover rounded-md" />
+                        <h3 className="text-neutral-950 mt-2 font-medium">Берлин — Нью-Йорк</h3>
+                        <p className="text-neutral-700">От $500</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
