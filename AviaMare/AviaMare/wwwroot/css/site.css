@@ -22,6 +22,9 @@
 
 :host,
 html {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     font-family: Open Sans, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
@@ -592,13 +595,10 @@ video {
 
 body {
     line-height: inherit;
-    padding: 24px;
     display: flex;
     flex-direction: column;
-    min-width: 100vw;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
+    min-width: 100%;
+    min-height: 100%;
     background: linear-gradient(135deg, #ffffff, #d4d4d4);
 }
 
