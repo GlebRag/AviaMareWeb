@@ -1,7 +1,7 @@
 ﻿@using AviaMare.Services
 @inject AuthService authService
 
-<!DOCTYPE html>
+@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -59,4 +59,82 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+</html> *@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Webcrumbs Plugin</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AviaMare.styles.css" asp-append-version="true" />
+    @RenderSection("Styles", false)
+  </head>
+  <body>
+    <div id="webcrumbs">
+      <div class="w-full min-h-full bg-white shadow-lg rounded-lg">
+        <header
+          class="w-full bg-orange-100 py-6 px-8 flex justify-between items-center"
+        >
+          <div class="flex items-center gap-4">
+            <i class="material-symbols-outlined text-orange-500 text-3xl"
+              >flight</i
+            >
+            <h1 class="font-title text-orange-950 text-2xl">AviaMare</h1>
+          </div>
+          <nav class="flex gap-6">
+            <a href="#" class="text-neutral-950 hover:text-orange-500"
+              >Главная</a
+            >
+            <a href="#" class="text-neutral-950 hover:text-orange-500">Рейсы</a>
+            <a href="#" class="text-neutral-950 hover:text-orange-500"
+              >Регистрация</a
+            >
+            <a href="#" class="text-neutral-950 hover:text-orange-500">Вход</a>
+          </nav>
+          <div class="flex items-center gap-4">
+            <a
+              href="#"
+              class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200"
+            >
+              ru/en
+            </a>
+            <a
+              href="#"
+              class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200"
+            >
+              Профиль
+            </a>
+          </div>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+            @RenderBody()
+            </main>
+        </div>
+        <footer
+          class="w-full bg-orange-200 py-4 px-8 flex justify-between items-center"
+        >
+          <p class="text-neutral-700">© 2023 AviaMare. Все права защищены.</p>
+          <div class="flex gap-4">
+            <a href="#" class="text-orange-500">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="#" class="text-orange-500">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="#" class="text-orange-500">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+      </div>
+    </div>
+  </body>
 </html>

@@ -4,6 +4,9 @@
 
 @import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
 
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
 /*! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com*/
 *,
 :after,
@@ -382,18 +385,13 @@ video {
     height: 100px;
 }
 
-#webcrumbs .h-\[150px\] {
-    height: 150px;
+#webcrumbs .min-h-screen {
+    min-height: 100vh;
 }
 
-#webcrumbs .min-h-\[800px\] {
-    min-height: 800px;
+#webcrumbs .min-h-full {
+    height: 100%;
 }
-
-#webcrumbs .w-\[1200px\] {
-    width: 1200px;
-}
-
 #webcrumbs .w-full {
     width: 100%;
 }
@@ -524,11 +522,6 @@ video {
     padding-top: 8px;
 }
 
-#webcrumbs .py-4 {
-    padding-bottom: 16px;
-    padding-top: 16px;
-}
-
 #webcrumbs .py-6 {
     padding-bottom: 24px;
     padding-top: 24px;
@@ -559,11 +552,6 @@ video {
 
 #webcrumbs .font-medium {
     font-weight: 500;
-}
-
-#webcrumbs .text-neutral-700 {
-    --tw-text-opacity: 1;
-    color: rgb(103 103 103 / var(--tw-text-opacity));
 }
 
 #webcrumbs .text-neutral-950 {
@@ -601,6 +589,19 @@ video {
         --tw-text-opacity: 1;
         color: rgb(249 115 22 / var(--tw-text-opacity));
     }
+
+body {
+    line-height: inherit;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    min-width: 100vw;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffffff, #d4d4d4);
+}
+
 
 
 .users .role {
