@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="~/AviaMare.styles.css" asp-append-version="true" />
     @RenderSection("Styles", false)
   </head>
-  <body>
+<body>
     <div id="webcrumbs">
-      <div class="w-full min-h-full bg-white shadow-lg rounded-lg">
+      <div class="bg-white shadow-lg rounded-lg">
         <header
           class="w-full bg-orange-100 py-6 px-8 flex justify-between items-center"
         >
@@ -25,14 +25,23 @@
             <h1 class="font-title text-orange-950 text-2xl">AviaMare</h1>
           </div>
           <nav class="flex gap-6">
-            <a href="#" class="text-neutral-950 hover:text-orange-500"
+            <a href="/" class="text-neutral-950 hover:text-orange-500"
               >Главная</a
             >
             <a href="#" class="text-neutral-950 hover:text-orange-500">Рейсы</a>
-            <a href="#" class="text-neutral-950 hover:text-orange-500"
-              >Регистрация</a
-            >
-            <a href="#" class="text-neutral-950 hover:text-orange-500">Вход</a>
+                    @if (!User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Login">Вход</a>
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Register">Регистрация</a>
+                    }
+                    else
+                    {
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Logout">Выйти</a>
+                    }
+                    @if (authService.IsAdmin())
+                    {
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Admin" asp-action="Users">Пользователи</a>
+                    }
           </nav>
           <div class="flex items-center gap-4">
             <a

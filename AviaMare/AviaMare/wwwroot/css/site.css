@@ -393,7 +393,7 @@ video {
 }
 
 #webcrumbs .min-h-full {
-    height: 100%;
+    min-height: 100%;
 }
 #webcrumbs .w-full {
     width: 100%;
@@ -586,6 +586,7 @@ video {
 #webcrumbs {
     font-family: Montserrat !important;
     font-size: 16px !important;
+    min-height 100vh;
 }
 
     #webcrumbs .hover\:text-orange-500:hover {
@@ -597,12 +598,17 @@ body {
     line-height: inherit;
     display: flex;
     flex-direction: column;
-    min-width: 100%;
-    min-height: 100%;
+    min-width: 100vh; 
+    min-height: 100vh;
     background: linear-gradient(135deg, #ffffff, #d4d4d4);
 }
 
-
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  line-height: 60px;
+}
 
 .users .role {
     border: 1px red solid;
