@@ -8,12 +8,6 @@
 
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
 /*! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com*/
-*,
-:after,
-:before {
-    border: 0 solid #e5e7eb;
-    box-sizing: border-box;
-}
 
 :after,
 :before {
@@ -35,8 +29,14 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
-body {
-    line-height: inherit;
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html, body {
+    height 100%;
     margin: 0;
 }
 
@@ -595,7 +595,6 @@ video {
     }
 
 body {
-    line-height: inherit;
     display: flex;
     flex-direction: column;
     min-width: 100vh; 
@@ -610,6 +609,10 @@ body {
   line-height: 60px;
 }
 
+.users {
+    padding-bottom: 100vh;
+    padding-top: 40px;
+}
 .users .role {
     border: 1px red solid;
     border-radius: 5px;
@@ -622,4 +625,21 @@ body {
     border-radius: 5px;
     display: inline-block;
     padding: 5px;
+}
+
+.loginAndRegister {
+    display: block;
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    margin-bottom: 115px;
+}
+.username{
+    border: 0px;
+    width: 100%;
+}
+.password {
+    border: 0px;
+    width: 100%;
 }
