@@ -55,6 +55,11 @@ namespace AviaMare.Services
             return IsAuthenticated() && GetRole().HasFlag(Role.Admin);
         }
 
+        public bool IsAviaMareModerator()
+        {
+            return IsAuthenticated() && GetRole().HasFlag(Role.AviaMareModerator);
+        }
+
         public bool HasRole(Role role)
         {
             return IsAuthenticated() && GetRole().HasFlag(role);

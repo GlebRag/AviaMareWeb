@@ -1,0 +1,28 @@
+﻿@* @model AviaMare.Models.Home.TicketCreationViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <div>
+        @Html.TextBoxFor(x => x.Name, new { placeholder = "Введи имя" })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.Url, new { placeholder = "Введи путь к картинке" })
+        @Html.ValidationMessageFor(x => x.Url)
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.FilmDuration, new { placeholder = "Введи продолжительность фильма", @type = "number" })
+        @Html.ValidationMessageFor(x => x.FilmDuration)
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.NumberOfMusicalCompositions, new { placeholder = "Введите количество музыкальных композиций", @type = "number" })
+        @Html.ValidationMessageFor(x => x.NumberOfMusicalCompositions)
+    </div>
+    <div>
+        @Html.DropDownListFor(x => x.FilmDirectorId, Model.FilmDirectors)
+    </div>
+    <button type="submit">Создать</button>
+</form> *@
