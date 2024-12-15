@@ -1,5 +1,7 @@
 ﻿@using AviaMare.Models.Home
+@using AviaMare.Services
 @model List<TicketViewModel>
+@inject AuthService authService
 
 
 <div class="py-10">
@@ -79,44 +81,6 @@
             <h2 class="text-orange-950 font-bold text-lg mb-4">
                 Лучшие предложения
             </h2>
-            @* <div class="grid grid-cols-2 gap-6">
-                <div class="bg-orange-100 p-4 rounded-md">
-                    <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/1"
-                         alt="destination"
-                         class="w-full h-[150px] object-cover rounded-md" />
-                    <h3 class="text-neutral-950 mt-2 font-medium">
-                        Нью-Йорк — Париж
-                    </h3>
-                    <p class="text-neutral-700">От $450</p>
-                </div>
-                <div class="bg-orange-100 p-4 rounded-md">
-                    <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/2"
-                         alt="destination"
-                         class="w-full h-[150px] object-cover rounded-md" />
-                    <h3 class="text-neutral-950 mt-2 font-medium">
-                        Лондон — Токио
-                    </h3>
-                    <p class="text-neutral-700">От $700</p>
-                </div>
-                <div class="bg-orange-100 p-4 rounded-md">
-                    <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/3"
-                         alt="destination"
-                         class="w-full h-[150px] object-cover rounded-md" />
-                    <h3 class="text-neutral-950 mt-2 font-medium">
-                        Сидней — Дубай
-                    </h3>
-                    <p class="text-neutral-700">От $600</p>
-                </div>
-                <div class="bg-orange-100 p-4 rounded-md">
-                    <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/4"
-                         alt="destination"
-                         class="w-full h-[150px] object-cover rounded-md" />
-                    <h3 class="text-neutral-950 mt-2 font-medium">
-                        Берлин — Нью-Йорк
-                    </h3>
-                    <p class="text-neutral-700">От $500</p>
-                </div>
-            </div> *@
             <div class="ticket-section">
     <div class="tickets">
         @foreach (var ticket in Model)
@@ -124,6 +88,10 @@
             <div class="ticket">
                 <div class="ticket-header">
                     <h2>От: @ticket.Departure — До: @ticket.Destination</h2>
+                    @if (authService.IsAviaMareModerator())
+                    {
+                        <a class="tag" href="/Home/Remove?id=@ticket.Id">Удалить</a>
+                    }
                 </div>
                 <div class="ticket-body">
                     <div class="info">
@@ -145,12 +113,13 @@
                 </div>
                 <div class="ticket-footer">
                     <div class="price">@ticket.Cost</div>
-                    <a href ="#"
-                        class=" text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="width: 100px">
+                    <button type ="submit"
+                        class=" text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="width: 150px; text-align: center; border: none">
                         Купить
-                    </a>
+                    </button>
                     <div class="seats">Мест осталось: нет данных</div>
                 </div>
+
             </div>
         }
     </div>
@@ -159,37 +128,3 @@
     </section>      
         
 </div>
-@* <div class="ticket-section">
-    <div class="tickets">
-        @foreach (var ticket in Model)
-        {
-            <div class="ticket">
-                <div class="ticket-header">
-                    <h2>От: @ticket.Departure — До: @ticket.Destination</h2>
-                </div>
-                <div class="ticket-body">
-                    <div class="info">
-                        <div>Время в полёте:</div>
-                        <span>@ticket.Time</span>
-                    </div>
-                    <div class="info">
-                        <div>Время вылета:</div>
-                        <span>@ticket.TakeOffTime</span>
-                    </div>
-                    <div class="info">
-                        <div>Время прилёта:</div>
-                        <span>@ticket.LandingTime</span>
-                    </div>
-                    <div class="info">
-                        <div>Самолёт:</div>
-                        <span>@ticket.IdPlane</span>
-                    </div>
-                </div>
-                <div class="ticket-footer">
-                    <div class="price">@ticket.Cost</div>
-                    <div class="seats">Мест осталось: нет данных</div>
-                </div>
-            </div>
-        }
-    </div>
-</div> *@

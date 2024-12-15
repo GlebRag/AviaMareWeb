@@ -3,8 +3,8 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<form class="ticket-section" method="post">
-    <div class="tickets">
+<form class="ticket-section-creation" method="post">
+    <div class="tickets-creation">
             <div class="ticket-creation">
                 <div class="ticket-header">   
                     <span>
@@ -54,12 +54,12 @@
                         @Html.TextBoxFor(x => x.Cost, new { placeholder = "Введи цену" })
                         @Html.ValidationMessageFor(x => x.Cost)
                     </div>
+                <button type="submit"
+                        class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="margin: 0 auto;display: block;">
+                    Создать
+                </button>
                     <div class="seats">Мест осталось: нет данных</div>
                 </div>
             </div>
-        <button type="submit"
-                class="bg-primary-500 text-primary-50 rounded-md py-2" style="margin: 0 auto;display: block;">
-            Создать
-        </button>
     </div>
 </form>

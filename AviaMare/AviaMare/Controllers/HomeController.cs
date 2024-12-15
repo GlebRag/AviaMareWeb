@@ -122,5 +122,12 @@ namespace AviaMare.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Remove(int id)
+        {
+            _ticketRepository.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
