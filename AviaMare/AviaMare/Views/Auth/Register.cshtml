@@ -16,7 +16,7 @@
                 <label for="password" class="text-neutral-950">Пароль</label>
                 <div class="border border-neutral-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary-500">
                     <div class="password">
-                        @Html.TextBoxFor(x => x.Password, new { @class = "password" })
+                        @Html.PasswordFor(x => x.Password, new { @class = "password" })
                         @Html.ValidationMessageFor(x => x.Password)
                     </div>
                 </div>
