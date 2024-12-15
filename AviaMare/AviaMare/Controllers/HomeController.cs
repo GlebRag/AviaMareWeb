@@ -106,7 +106,6 @@ namespace AviaMare.Controllers
                 TakeOffTime = viewModel.TakeOffTime,
                 LandingTime = viewModel.LandingTime
             };
-            //_moviePosterRepository.Add(dataMovie);
 
             _ticketRepository.Create(dataTicket);
 
