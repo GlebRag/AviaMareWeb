@@ -20,6 +20,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<WebDbContext>(x => x.UseSqlServer(WebDbContext.CONNECTION_STRING));
 
 builder.Services.AddScoped<IUserRepositryReal, UserRepository>();
+builder.Services.AddScoped<ITicketRepositoryReal, TicketRepository>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<EnumHelper>();
