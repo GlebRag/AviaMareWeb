@@ -78,53 +78,40 @@ namespace AviaMare.Controllers
             }
         }
 
-        //[HttpGet]
-        //public IActionResult CreateTicket()
-        //{
-        //    var viewModel = new TicketCreationViewModel();
+        [HttpGet]
+        public IActionResult CreateTicket()
+        {
+            var viewModel = new TicketCreationViewModel();
 
-        //    viewModel.FilmDirectors = _filmDirectorRepository
-        //        .GetAll()
-        //        .Select(x => new SelectListItem(x.LastName, x.Id.ToString())) // .Select(x => new SelectListItem(x.Name + " " + x.LastName, x.Id.ToString()))
-        //        .ToList();
+            return View(viewModel);
+        }
 
-        //    return View(viewModel);
-        //}
+        [HttpPost]
+        public IActionResult CreateTicket(TicketCreationViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
 
-        //[HttpPost]
-        //public IActionResult CreateTicket(TicketCreationViewModel viewModel)
-        //{
-        //    if (_.HasSimilarUrl(viewModel.Url))
-        //    {
-        //        ModelState.AddModelError(
-        //            nameof(MovieCreationViewModel.Url),
-        //            "Такой url уже есть");
-        //    }
+            var currentUserId = _authService.GetUserId();
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        viewModel.FilmDirectors = _filmDirectorRepository
-        //            .GetAll()
-        //            .Select(x => new SelectListItem(x.LastName, x.Id.ToString())) // .Select(x => new SelectListItem(x.Name + " " + x.LastName, x.Id.ToString()))
-        //            .ToList();
+            var dataTicket = new TicketData
+            {
+                Destination = viewModel.Destination,
+                Departure = viewModel.Departure,
+                IdPlane = viewModel.IdPlane,
+                Time = viewModel.Time,
+                Cost = viewModel.Cost,
+                TakeOffTime = viewModel.TakeOffTime,
+                LandingTime = viewModel.LandingTime
+            };
+            //_moviePosterRepository.Add(dataMovie);
 
-        //        return View(viewModel);
-        //    }
+            _ticketRepository.Create(dataTicket);
 
-        //    var currentUserId = _authService.GetUserId();
-
-        //    var dataMovie = new MovieData
-        //    {
-        //        Name = viewModel.Name,
-        //        ImageSrc = viewModel.Url,
-        //        //Tags = viewModel.Tags,
-        //    };
-        //    //_moviePosterRepository.Add(dataMovie);
-
-        //    _moviePosterRepository.Create(dataMovie, currentUserId!.Value, viewModel.FilmDirectorId);
-
-        //    return RedirectToAction("AllPosters");
-        //}
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Privacy()
         {

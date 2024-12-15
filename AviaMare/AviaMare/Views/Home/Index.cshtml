@@ -1,63 +1,6 @@
 ﻿@using AviaMare.Models.Home
 @model List<TicketViewModel>
 
-<style>
-    .ticket-section {
-        margin: 0;
-        padding: 0;
-        justify-content: center;
-        align-items: center;
-        min-height: 20vh;
-    }
-
-    .ticket {
-        width: 90%;
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        margin: 5%;
-        border: 1px solid #ddd;
-    }
-
-    .ticket-header {
-        background: #0078d7;
-        color: #fff;
-        padding: 15px;
-        text-align: center;
-    }
-
-        .ticket-header h2 {
-            margin: 0;
-            font-size: 18px;
-        }
-
-    .ticket-body {
-        padding: 15px;
-    }
-
-        .ticket-body .info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-            .ticket-body .info span {
-                font-weight: bold;
-            }
-
-    .ticket-footer {
-        background: #f7f7f7;
-        padding: 10px 15px;
-        display: flex;
-        justify-content: space-between;
-        border-top: 1px solid #ddd;
-    }
-
-        .ticket-footer .price {
-            color: #0078d7;
-            font-weight: bold;
-        }
 
 <div class="py-10">
     <section class="flex gap-8 items-start">
@@ -136,7 +79,7 @@
             <h2 class="text-orange-950 font-bold text-lg mb-4">
                 Лучшие предложения
             </h2>
-            <div class="grid grid-cols-2 gap-6">
+            @* <div class="grid grid-cols-2 gap-6">
                 <div class="bg-orange-100 p-4 rounded-md">
                     <img src="https://tools-api.webcrumbs.org/image-placeholder/250/150/travel/1"
                          alt="destination"
@@ -173,15 +116,50 @@
                     </h3>
                     <p class="text-neutral-700">От $500</p>
                 </div>
+            </div> *@
+            <div class="ticket-section">
+    <div class="tickets">
+        @foreach (var ticket in Model)
+        {
+            <div class="ticket">
+                <div class="ticket-header">
+                    <h2>От: @ticket.Departure — До: @ticket.Destination</h2>
+                </div>
+                <div class="ticket-body">
+                    <div class="info">
+                        <div>Время в полёте:</div>
+                        <span>@ticket.Time</span>
+                    </div>
+                    <div class="info">
+                        <div>Время вылета:</div>
+                        <span>@ticket.TakeOffTime</span>
+                    </div>
+                    <div class="info">
+                        <div>Время прилёта:</div>
+                        <span>@ticket.LandingTime</span>
+                    </div>
+                    <div class="info">
+                        <div>Самолёт:</div>
+                        <span>@ticket.IdPlane</span>
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <div class="price">@ticket.Cost</div>
+                    <a href ="#"
+                        class=" text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="width: 100px">
+                        Купить
+                    </a>
+                    <div class="seats">Мест осталось: нет данных</div>
+                </div>
             </div>
-        </div>
-    </section>
-        .ticket-footer .seats {
-            font-size: 14px;
-            color: #555;
         }
-</style>
-<div class="ticket-section">
+    </div>
+</div>
+        </div>
+    </section>      
+        
+</div>
+@* <div class="ticket-section">
     <div class="tickets">
         @foreach (var ticket in Model)
         {
@@ -214,4 +192,4 @@
             </div>
         }
     </div>
-</div>
+</div> *@

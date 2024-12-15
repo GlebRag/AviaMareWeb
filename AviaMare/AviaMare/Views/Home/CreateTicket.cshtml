@@ -1,28 +1,65 @@
-﻿@* @model AviaMare.Models.Home.TicketCreationViewModel
+﻿@model AviaMare.Models.Home.TicketCreationViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<form method="post">
-    <div>
-        @Html.TextBoxFor(x => x.Name, new { placeholder = "Введи имя" })
-        @Html.ValidationMessageFor(x => x.Name)
+<form class="ticket-section" method="post">
+    <div class="tickets">
+            <div class="ticket-creation">
+                <div class="ticket-header">   
+                    <span>
+                    От:
+                    @Html.TextBoxFor(x => x.Departure, new { placeholder = "Введи откуда" })
+                    @Html.ValidationMessageFor(x => x.Departure)
+                    —
+                    До:
+                    @Html.TextBoxFor(x => x.Destination, new { placeholder = "Введи куда" })
+                    @Html.ValidationMessageFor(x => x.Destination)
+                    </span>
+                </div>
+                <div class="ticket-body">
+                    <div class="info">
+                        <div>Время в полёте:</div>
+                        <span>
+                            @Html.TextBoxFor(x => x.Time, new { placeholder = "Введи время полета" })
+                            @Html.ValidationMessageFor(x => x.Time)
+                        </span>
+                    </div>
+                    <div class="info">
+                        <div>Время вылета:</div>
+                        <span>
+                            @Html.TextBoxFor(x => x.TakeOffTime, new { placeholder = "Введи время вылета" })
+                            @Html.ValidationMessageFor(x => x.TakeOffTime)
+                        </span>
+                    </div>
+                    <div class="info">
+                        <div>
+                            Время прилёта:
+                        </div>
+                        <span>
+                            @Html.TextBoxFor(x => x.LandingTime, new { placeholder = "Введи время прилета" })
+                            @Html.ValidationMessageFor(x => x.LandingTime)
+                        </span>
+                    </div>
+                    <div class="info">
+                        <div>Самолёт:</div>
+                        <span>
+                            @Html.TextBoxFor(x => x.IdPlane, new { placeholder = "Введи номер самолета" })
+                            @Html.ValidationMessageFor(x => x.IdPlane)
+                        </span>
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <div class="price">
+                        @Html.TextBoxFor(x => x.Cost, new { placeholder = "Введи цену" })
+                        @Html.ValidationMessageFor(x => x.Cost)
+                    </div>
+                    <div class="seats">Мест осталось: нет данных</div>
+                </div>
+            </div>
+        <button type="submit"
+                class="bg-primary-500 text-primary-50 rounded-md py-2" style="margin: 0 auto;display: block;">
+            Создать
+        </button>
     </div>
-    <div>
-        @Html.TextBoxFor(x => x.Url, new { placeholder = "Введи путь к картинке" })
-        @Html.ValidationMessageFor(x => x.Url)
-    </div>
-    <div>
-        @Html.TextBoxFor(x => x.FilmDuration, new { placeholder = "Введи продолжительность фильма", @type = "number" })
-        @Html.ValidationMessageFor(x => x.FilmDuration)
-    </div>
-    <div>
-        @Html.TextBoxFor(x => x.NumberOfMusicalCompositions, new { placeholder = "Введите количество музыкальных композиций", @type = "number" })
-        @Html.ValidationMessageFor(x => x.NumberOfMusicalCompositions)
-    </div>
-    <div>
-        @Html.DropDownListFor(x => x.FilmDirectorId, Model.FilmDirectors)
-    </div>
-    <button type="submit">Создать</button>
-</form> *@
+</form>
