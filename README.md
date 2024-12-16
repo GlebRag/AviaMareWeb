@@ -11,9 +11,11 @@ With us, you can quickly and conveniently find the best deals from leading airli
 - 24/7 support to assist with any questions.
 #### By Ragozin Gleb and Borodkin Dmitry
 
-[![Discord](https://img.shields.io/discord/1006230325061496872?logo=discord&logoColor=white)](https://discord.gg/HfsNpfJFDR)
-
-[![GitHub](https://img.shields.io/github/license/NottLexa/Casual-Playground)](https://github.com/arkain123/aviamareweb/blob/release/COPYING)
+[![GitHub](https://img.shields.io/github/license/arkain123/AviaMareWeb)](https://github.com/arkain123/AviaMareWeb/blob/master/LICENSE.txt)
+![Last Commit](https://img.shields.io/github/last-commit/arkain123/AviaMareWeb)
+![Downloads](https://img.shields.io/github/downloads/arkain123/AviaMareWeb/total)
+![Code Size](https://img.shields.io/github/languages/code-size/arkain123/AviaMareWeb)
+![Repo size](https://img.shields.io/github/repo-size/arkain123/AviaMareWeb)
 
 
 ### Important information
@@ -62,9 +64,11 @@ ____
 - Поддержка 24/7 для решения любых вопросов.
 #### Создано Рагозиным Глебом и Бородкиным Дмитрием
 
-[![Discord](https://img.shields.io/discord/1006230325061496872?logo=discord&logoColor=white)](https://discord.gg/HfsNpfJFDR)
-
-[![GitHub](https://img.shields.io/github/license/NottLexa/Casual-Playground)](https://github.com/arkain123/aviamareweb/blob/release/COPYING)
+[![GitHub](https://img.shields.io/github/license/arkain123/AviaMareWeb)](https://github.com/arkain123/AviaMareWeb/blob/master/LICENSE.txt)
+![Last Commit](https://img.shields.io/github/last-commit/arkain123/AviaMareWeb)
+![Downloads](https://img.shields.io/github/downloads/arkain123/AviaMareWeb/total)
+![Code Size](https://img.shields.io/github/languages/code-size/arkain123/AviaMareWeb)
+![Repo size](https://img.shields.io/github/repo-size/arkain123/AviaMareWeb)
 
 
 ### Важная информация
