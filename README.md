@@ -41,12 +41,14 @@ With these marks you can specify/find out what specific change did.
 
 ## How to install
 
-1) 
-2) 
+1) Install .NET 8.0 (Recomended)
+2) Download latest release
+3) Unpack .rar in folder on your machine
 
 ## How to run
 
-1) 
+1) Run (as administrator) AviaMare.exe
+2) Connect to web-application through your browser with URI "http://localhost:5000" (Optional)
 
 ### Links
 
@@ -94,12 +96,14 @@ ____
 
 ## Как установить
 
-1) 
-2) 
+1) Установите .NET 8.0 (Рекомендуется)
+2) Скачайте последний релиз
+3) Распакуйте .rar в папку на вашем устройсте
 
 ## Как запустить
 
-1) 
+1) Запустите (от администратора) исполняемый файл AviaMare.exe
+2) Присоединитесь к веб-приложению через ваш браузер используя URI "http://localhost:5000" (Опционально)
 
 ### Ссылки
 
