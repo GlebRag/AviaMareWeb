@@ -24,5 +24,14 @@ namespace AviaMare.Data
             optionsBuilder.UseSqlServer(CONNECTION_STRING);
             // base.OnConfiguring(optionsBuilder);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TicketData>()
+                .HasMany(x => x.Buyers)
+                .WithOne(x => x.Ticket)
+                .OnDelete(DeleteBehavior.NoAction);
+        }
     }
 }

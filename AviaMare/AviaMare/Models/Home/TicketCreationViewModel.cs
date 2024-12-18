@@ -18,5 +18,6 @@ namespace AviaMare.Models.Home
         public DateTime TakeOffTime { get; set; }
         [Required]
         public DateTime LandingTime { get; set; }
+        public int Count { get; set; }
     }
 }

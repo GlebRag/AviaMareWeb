@@ -13,5 +13,8 @@ namespace AviaMare.Data.Models
         public decimal Cost { get; set; }
         public DateTime TakeOffTime { get; set; }
         public DateTime LandingTime { get; set; }
+        public int Count { get; set; }
+
+        public virtual List<UserData> Buyers { get; set; } = new List<UserData>();
     }
 }

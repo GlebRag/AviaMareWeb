@@ -2,6 +2,7 @@
 @using AviaMare.Services
 @model List<TicketViewModel>
 @inject AuthService authService
+@inject UserService userService
 
 
 <div class="py-10">
@@ -113,11 +114,23 @@
                 </div>
                 <div class="ticket-footer">
                     <div class="price">@ticket.Cost</div>
-                    <button type ="submit"
-                        class=" text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="width: 150px; text-align: center; border: none">
-                        Купить
-                    </button>
-                    <div class="seats">Мест осталось: нет данных</div>
+                                
+                                @if (authService.IsAuthenticated())
+                                {
+                                    <form action="/Home/LinkUserAndTicket" method="post">
+                                        <input type="hidden" name="ticketId" value="@ticket.Id" />
+                                        <input type="hidden" name="userId" value="@authService.GetUserId()" />
+                                        @if (!userService.IsThisUserBoughtThisTicket(ticket.Id, authService.GetUserId() ?? 0))
+                                        {
+                                            <button type="submit" class=" text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="width: 150px; text-align: center; border: none">Купить</button>
+                                        }
+                                        else
+                                        {
+                                            <div>Уже купленно</div>
+                                        }
+                                    </form>
+                                }
+                    <div class="seats">Мест осталось: @ticket.Count</div>
                 </div>
 
             </div>

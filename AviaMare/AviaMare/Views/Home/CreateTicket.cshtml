@@ -58,7 +58,10 @@
                         class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="margin: 0 auto;display: block;">
                     Создать
                 </button>
-                    <div class="seats">Мест осталось: нет данных</div>
+                <div class="seats">
+                    @Html.TextBoxFor(x => x.Count, new { placeholder = "Введи кол-во билетов" })
+                    @Html.ValidationMessageFor(x => x.Count)
+                </div>
                 </div>
             </div>
     </div>

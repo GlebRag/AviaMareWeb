@@ -10,5 +10,6 @@
         public decimal Cost { get; set; }
         public DateTime TakeOffTime { get; set; }
         public DateTime LandingTime { get; set; }
+        public int Count { get; set; }
     }
 }
