@@ -20,6 +20,8 @@
             <button type="submit">Обновить аватар</button>
         </form>
     </div> *@
+    @if (Model.Tickets is not null)
+    {
     <div class="tickets">
         @foreach (var ticket in Model.Tickets)
         {
@@ -49,4 +51,5 @@
             </div>
         }
     </div>
+    }
 </div>

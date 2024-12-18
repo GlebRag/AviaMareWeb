@@ -137,8 +137,12 @@ namespace AviaMare.Controllers
             var userId = _authService.GetUserId()!.Value;
 
             //viewModel.AvatarUrl = _userRepositryReal.GetAvatarUrl(userId);
-            var ticketForUser = _ticketRepository.GetTicket(userId);
 
+            var ticketForUser = _ticketRepository.GetTicket(userId);
+            if (ticketForUser.All(ticket => ticket == null))
+            {
+                return View(viewModel);
+            }
             viewModel.Tickets = ticketForUser
                 .Select(x => new TicketShortInfoViewModel
                 {
