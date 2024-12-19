@@ -53,7 +53,7 @@ With these marks you can specify/find out what specific change did.
 ### Links
 
 * [GitHub](https://github.com/arkain123/AviaMareWeb)
-* [Wiki](https://github.com/arkain123/AviaMareWeb/wiki)
+* [Wiki](https://arkain123.github.io/AviaMareWeb/)
 
 ____
 
@@ -108,4 +108,4 @@ ____
 ### Ссылки
 
 * [GitHub](https://github.com/arkain123/AviaMareWeb)
-* [Документация](https://github.com/arkain123/AviaMareWeb/wiki)
+* [Документация](https://arkain123.github.io/AviaMareWeb/)
