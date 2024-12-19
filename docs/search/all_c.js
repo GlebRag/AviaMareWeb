@@ -1,5 +1,12 @@
 var searchData=
 [
-  ['planedata_0',['PlaneData',['../class_avia_mare_1_1_data_1_1_models_1_1_plane_data.html',1,'AviaMare::Data::Models']]],
-  ['planerepository_1',['PlaneRepository',['../class_avia_mare_1_1_data_1_1_repositories_1_1_plane_repository.html',1,'AviaMare::Data::Repositories']]]
+  ['paris_5ftext_0',['Paris_Text',['../class_avia_mare_1_1_localisation_1_1_home.html#a79b9961946b534d5493174444593bba8',1,'AviaMare.Localisation.Home.Paris_Text'],['../class_avia_mare_1_1_localisation_1_1_home_______xD0_x9A_xD0_xBE_xD0_xBF_xD0_xB8_xD1_x80_xD0_xBE_xD0_xB2_xD0_xB0_xD1_x82_xD1_x8C.html#a95756b604e71131074f6b5ed91e1d0e7',1,'AviaMare.Localisation.Home___Копировать.Paris_Text']]],
+  ['password_5fbox_5ftext_1',['Password_Box_Text',['../class_avia_mare_1_1_localisation_1_1_auth.html#acf02c2ce7728292e73ad02b19a0c16fb',1,'AviaMare.Localisation.Auth.Password_Box_Text'],['../class_avia_mare_1_1_localisation_1_1_auth_______xD0_x9A_xD0_xBE_xD0_xBF_xD0_xB8_xD1_x80_xD0_xBE_xD0_xB2_xD0_xB0_xD1_x82_xD1_x8C.html#a16a991f218b2303cf9366fad27c44d3a',1,'AviaMare.Localisation.Auth___Копировать.Password_Box_Text']]],
+  ['places_5fleft_5ftext_2',['Places_Left_Text',['../class_avia_mare_1_1_localisation_1_1_info_ticket.html#af724dbc1a50d1b807f806ac1f08b6d0b',1,'AviaMare::Localisation::InfoTicket']]],
+  ['plane_5fticket_5ftext_3',['Plane_Ticket_Text',['../class_avia_mare_1_1_localisation_1_1_info_ticket.html#acc9866d14484325df4df0383b45d94e1',1,'AviaMare::Localisation::InfoTicket']]],
+  ['planedata_4',['PlaneData',['../class_avia_mare_1_1_data_1_1_models_1_1_plane_data.html',1,'AviaMare::Data::Models']]],
+  ['planerepository_5',['PlaneRepository',['../class_avia_mare_1_1_data_1_1_repositories_1_1_plane_repository.html',1,'AviaMare::Data::Repositories']]],
+  ['popular_5fdestinations_5ftext_6',['Popular_Destinations_Text',['../class_avia_mare_1_1_localisation_1_1_home.html#a09eefaa339c30f324d1c8bdc28204531',1,'AviaMare.Localisation.Home.Popular_Destinations_Text'],['../class_avia_mare_1_1_localisation_1_1_home_______xD0_x9A_xD0_xBE_xD0_xBF_xD0_xB8_xD1_x80_xD0_xBE_xD0_xB2_xD0_xB0_xD1_x82_xD1_x8C.html#a121e5a2defa27cbcfa674017eaaf2809',1,'AviaMare.Localisation.Home___Копировать.Popular_Destinations_Text']]],
+  ['profile_5fbutton_5ftext_7',['Profile_Button_Text',['../class_avia_mare_1_1_localisation_1_1_main_page.html#a5c7154f3787ec457ed87c2e56f7425af',1,'AviaMare.Localisation.MainPage.Profile_Button_Text'],['../class_avia_mare_1_1_localisation_1_1_main_page_______xD0_x9A_xD0_xBE_xD0_xBF_xD0_xB8_xD1_x80_xD02766d9ad1015bca0e7e990d11faaa950.html#a31941cce0658fe6c8cdf8b1cbb6a0caa',1,'AviaMare.Localisation.MainPage___Копировать.Profile_Button_Text']]],
+  ['profileviewmodel_8',['ProfileViewModel',['../class_avia_mare_1_1_models_1_1_home_1_1_profile_1_1_profile_view_model.html',1,'AviaMare::Models::Home::Profile']]]
 ];
