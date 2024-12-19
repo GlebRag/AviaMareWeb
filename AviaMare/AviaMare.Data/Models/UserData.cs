@@ -9,5 +9,7 @@ namespace AviaMare.Data.Models
         public string Password { get; set; }
         public Role Role { get; set; }
         public virtual TicketData? Ticket { get; set; }
+
+        public Language Language { get; set; }
     }
 }

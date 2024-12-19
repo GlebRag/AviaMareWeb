@@ -1,3 +1,4 @@
+using AviaMare.CustomMiddleWares;
 using AviaMare.Data;
 using AviaMare.Data.Interface.Repositories;
 using AviaMare.Data.Repositories;
@@ -59,6 +60,8 @@ app.UseRouting();
 
 app.UseAuthentication(); // Who Am I?
 app.UseAuthorization(); // May I?
+
+app.UseMiddleware<LocalizationMiddleWare>();
 
 app.MapControllerRoute(
     name: "default",

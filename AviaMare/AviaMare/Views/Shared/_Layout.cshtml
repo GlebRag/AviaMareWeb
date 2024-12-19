@@ -1,4 +1,6 @@
 ﻿@using AviaMare.Services
+@using AviaMare.Localisation
+@using Enums.Users
 @inject AuthService authService
 
 <!doctype html>
@@ -27,39 +29,44 @@
           </div>
           <nav class="flex gap-6">
             <a href="/" class="text-neutral-950 hover:text-orange-500"
-              >Главная</a
+              >@MainPage.Main_Button_Text</a
             >
-            <a href="#" class="text-neutral-950 hover:text-orange-500">Рейсы</a>
+                    <a href="#" class="text-neutral-950 hover:text-orange-500">@MainPage.Flights_Button_Text</a>
                     @if (!User.Identity?.IsAuthenticated ?? false)
                     {
-                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Login">Вход</a>
-                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Register">Регистрация</a>
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Login">@MainPage.Login_Button_Text</a>
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Register">@MainPage.Registration_Button_Text</a>
                     }
                     else
                     {
-                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Logout">Выйти</a>
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Logout">@MainPage.LogOut_Button_Text</a>
                     }
                     @if (authService.IsAdmin())
                     {
-                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Admin" asp-action="Users">Пользователи</a>
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Admin" asp-action="Users">@MainPage.Users_Button_Text</a>
                     }
                     @if (authService.IsAviaMareModerator())
                     {
-                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Home" asp-action="CreateTicket">Создать</a>
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Home" asp-action="CreateTicket">@MainPage.Create_Button_Text</a>
                     }
           </nav>
           <div class="flex items-center gap-4">
-            <a
-              href="#"
-              class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200"
-            >
-              ru/en
-            </a>
+                    @if (authService.IsAuthenticated())
+                    {
+                        <a href="/Home/UpdateLocale?language=@Language.En"
+                        class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200">
+                            En
+                        </a>
+                        <a href="/Home/UpdateLocale?language=@Language.Ru"
+                           class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200">
+                            Ru
+                        </a>
+                    }
             <a
               href="/Home/Profile"
               class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200"
             >
-              Профиль
+                        @MainPage.Profile_Button_Text
             </a>
           </div>
         </header>

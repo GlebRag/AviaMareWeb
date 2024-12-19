@@ -1,4 +1,5 @@
 ﻿@using AviaMare.Models.Home.Profile
+@using AviaMare.Localisation
 
 @model ProfileViewModel
 
@@ -21,7 +22,6 @@
         </form>
     </div> *@
     <div style="margin: 10px">
-        Купленные вами билеты:
     </div>
     @if (Model.Tickets is not null)
     {
@@ -30,23 +30,23 @@
         {
             <div class="ticket">
                 <div class="ticket-header">
-                    <h2>От: @ticket.Departure — До: @ticket.Destination</h2>
+                        <h2>@InfoTicket.From_Ticket_Text @ticket.Departure — @InfoTicket.To_Ticket_Text @ticket.Destination</h2>
                 </div>
                 <div class="ticket-body">
                     <div class="info">
-                        <div>Время в полёте:</div>
+                            <div>@InfoTicket.Flight_Time_Ticket_Text</div>
                         <span>@ticket.Time</span>
                     </div>
                     <div class="info">
-                        <div>Время вылета:</div>
+                            <div>@InfoTicket.Departure_Time_Ticket_Text</div>
                         <span>@ticket.TakeOffTime</span>
                     </div>
                     <div class="info">
-                        <div>Время прилёта:</div>
+                            <div>@InfoTicket.Arrival_Time_Ticket_Text</div>
                         <span>@ticket.LandingTime</span>
                     </div>
                     <div class="info">
-                        <div>Самолёт:</div>
+                            <div>@InfoTicket.Plane_Ticket_Text</div>
                         <span>@ticket.IdPlane</span>
                     </div>
                 </div>
