@@ -1,5 +1,6 @@
 ﻿@using AviaMare.Models.Home
 @using AviaMare.Services
+@using AviaMare.Localisation
 @model List<TicketViewModel>
 @inject AuthService authService
 @inject UserService userService
@@ -28,29 +29,29 @@
         <div class="basis-1/3">
             <form class="bg-orange-50 p-6 rounded-md mb-6" action="/Home/SearchTicket" method="post">
                 <h2 class="text-orange-950 font-bold text-lg mb-4">
-                    Поиск рейсов
+                    @Home.Search_Flights_Text
                 </h2>
                 <div class="flex flex-col gap-4">
                     <label class="flex flex-col">
-                        <span class="text-neutral-950">Откуда</span>
+                        <span class="text-neutral-950">@Home.From_Text</span>
                         <input type="text"
-                               placeholder="например, Нью-Йорк"
+                               placeholder=@Home.From_Example_Text
                                class="border border-orange-300 p-2 rounded-md"
                                oninput="updateHiddenValue('fromInput', this.value)" />
                         <input type="hidden" name="departure" id="fromInput" value="null" />
                     </label>
 
                     <label class="flex flex-col">
-                        <span class="text-neutral-950">Куда</span>
+                        <span class="text-neutral-950">@Home.To_Text</span>
                         <input type="text"
-                               placeholder="например, Лос-Анджелес"
+                               placeholder=@Home.To_Example_Text
                                class="border border-orange-300 p-2 rounded-md"
                                oninput="updateHiddenValue('toInput', this.value)" />
                         <input type="hidden" name="destination" id="toInput" value="null" />
                     </label>
 
                     <label class="flex flex-col">
-                        <span class="text-neutral-950">Дата</span>
+                        <span class="text-neutral-950">@Home.Data_Text</span>
                         <input type="date"
                                class="border border-orange-300 p-2 rounded-md"
                                oninput="updateHiddenValue('dateInput', this.value)" />
@@ -58,7 +59,7 @@
                     </label>
 
                     <label class="flex flex-col">
-                        <span class="text-neutral-950">Ценовой диапазон</span>
+                        <span class="text-neutral-950">@Home.Cost_Range_Text</span>
                         <input type="range" min="0" max="1000" value="1000" class="w-full" id="priceRange" oninput="updateRangeValue()" />
                         <div class="flex justify-between">
                             <span>0</span>
@@ -68,10 +69,10 @@
                     </label>
 
                     <label class="flex flex-col">
-                        <span class="text-neutral-950">Сортировка</span>
+                        <span class="text-neutral-950">@Home.Sort_Text</span>
                         <select id="sortOrder" onchange="updateSortOrder()">   
-                            <option value="desc">По убыванию</option>
-                            <option value="asc">По возрастанию</option>
+                            <option value="desc">@Home.Desc_Text</option>
+                            <option value="asc">@Home.Asc_Text</option>
                         </select>
                     </label>
 
@@ -79,37 +80,37 @@
                     <input type="hidden" name="sortOrder" id="hiddenSortOrder" value="desc" />
 
                     <button class="bg-orange-500 text-white py-2 px-4 rounded-md" type="submit">
-                        Найти
+                        @Home.Search_Text
                     </button>
                 </div>
             </form>
         </div>
         <div class="basis-2/3">
             <h2 class="text-orange-950 font-bold text-lg mb-4">
-                Популярные направления
+                @Home.Popular_Destinations_Text
             </h2>
             <div class="grid grid-cols-3 gap-6 mb-8">
                 <div class="bg-orange-100 p-4 rounded-md">
                     <img src="~/images/Bus.jpeg"
                          alt="destination"
                          class="w-full h-[100px] object-cover rounded-md" />
-                    <h3 class="text-neutral-950 mt-2 font-medium">Париж</h3>
+                    <h3 class="text-neutral-950 mt-2 font-medium">@Home.Paris_Text</h3>
                 </div>
                 <div class="bg-orange-100 p-4 rounded-md">
                     <img src="~/images/boat.jpeg"
                          alt="destination"
                          class="w-full h-[100px] object-cover rounded-md" />
-                    <h3 class="text-neutral-950 mt-2 font-medium">Токио</h3>
+                    <h3 class="text-neutral-950 mt-2 font-medium">@Home.Tokio_Text</h3>
                 </div>
                 <div class="bg-orange-100 p-4 rounded-md">
                     <img src="~/images/composition.jpeg"
                          alt="destination"
                          class="w-full h-[100px] object-cover rounded-md" />
-                    <h3 class="text-neutral-950 mt-2 font-medium">Дубай</h3>
+                    <h3 class="text-neutral-950 mt-2 font-medium">@Home.Dubai</h3>
                 </div>
             </div>
             <h2 class="text-orange-950 font-bold text-lg mb-4">
-                Билеты
+                @Home.Tickets_Text
             </h2>
             <div class="ticket-section">
     <div class="tickets">
@@ -117,27 +118,30 @@
         {
             <div class="ticket">
                 <div class="ticket-header">
-                    <h2>От: @ticket.Departure — До: @ticket.Destination</h2>
+                    <h2> @InfoTicket.From_Ticket_Text
+                        @ticket.Departure
+                        @InfoTicket.To_Ticket_Text
+                        @ticket.Destination</h2>
                     @if (authService.IsAviaMareModerator())
                     {
-                        <a class="tag" href="/Home/Remove?id=@ticket.Id">Удалить</a>
+                        <a class="tag" href="/Home/Remove?id=@ticket.Id">Delete</a>
                     }
                 </div>
                 <div class="ticket-body">
                     <div class="info">
-                        <div>Время в полёте:</div>
+                        <div>@InfoTicket.Flight_Time_Ticket_Text</div>
                         <span>@ticket.Time</span>
                     </div>
                     <div class="info">
-                        <div>Время вылета:</div>
+                        <div>@InfoTicket.Departure_Time_Ticket_Text</div>
                         <span>@ticket.TakeOffTime</span>
                     </div>
                     <div class="info">
-                        <div>Время прилёта:</div>
+                        <div>@InfoTicket.Arrival_Time_Ticket_Text</div>
                         <span>@ticket.LandingTime</span>
                     </div>
                     <div class="info">
-                        <div>Самолёт:</div>
+                        <div>@InfoTicket.Plane_Ticket_Text</div>
                         <span>@ticket.IdPlane</span>
                     </div>
                 </div>
@@ -151,15 +155,15 @@
                                         <input type="hidden" name="userId" value="@authService.GetUserId()" />
                                         @if (!userService.IsThisUserBoughtThisTicket(ticket.Id, authService.GetUserId() ?? 0))
                                         {
-                                            <button type="submit" class=" text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="width: 150px; text-align: center; border: none">Купить</button>
+                                            <button type="submit" class=" text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="width: 150px; text-align: center; border: none">@InfoTicket.Buy_Ticket_Text</button>
                                         }
                                         else
                                         {
-                                            <div>Уже купленно</div>
+                                            <div>@InfoTicket.Bought_Text</div>
                                         }
                                     </form>
                                 }
-                    <div class="seats">Мест осталось: @ticket.Count</div>
+                                <div class="seats">@InfoTicket.Places_Left_Text @ticket.Count</div>
                 </div>
 
             </div>

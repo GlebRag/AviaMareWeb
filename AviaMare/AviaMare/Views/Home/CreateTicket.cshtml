@@ -1,4 +1,5 @@
 ﻿@model AviaMare.Models.Home.TicketCreationViewModel
+@using AviaMare.Localisation
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,57 +10,57 @@
                 <div class="ticket-header">   
                     <span>
                     От:
-                    @Html.TextBoxFor(x => x.Departure, new { placeholder = "Введи откуда" })
+                    @Html.TextBoxFor(x => x.Departure)
                     @Html.ValidationMessageFor(x => x.Departure)
                     —
                     До:
-                    @Html.TextBoxFor(x => x.Destination, new { placeholder = "Введи куда" })
+                    @Html.TextBoxFor(x => x.Destination)
                     @Html.ValidationMessageFor(x => x.Destination)
                     </span>
                 </div>
                 <div class="ticket-body">
                     <div class="info">
-                        <div>Время в полёте:</div>
+                    <div>@InfoTicket.Flight_Time_Ticket_Text</div>
                         <span>
-                            @Html.TextBoxFor(x => x.Time, new { placeholder = "Введи время полета" })
+                        @Html.TextBoxFor(x => x.Time)
                             @Html.ValidationMessageFor(x => x.Time)
                         </span>
                     </div>
                     <div class="info">
-                        <div>Время вылета:</div>
+                    <div>@InfoTicket.Departure_Time_Ticket_Text</div>
                         <span>
-                            @Html.TextBoxFor(x => x.TakeOffTime, new { placeholder = "Введи время вылета" })
+                        @Html.TextBoxFor(x => x.TakeOffTime)
                             @Html.ValidationMessageFor(x => x.TakeOffTime)
                         </span>
                     </div>
                     <div class="info">
                         <div>
-                            Время прилёта:
+                        @InfoTicket.Arrival_Time_Ticket_Text
                         </div>
                         <span>
-                            @Html.TextBoxFor(x => x.LandingTime, new { placeholder = "Введи время прилета" })
+                        @Html.TextBoxFor(x => x.LandingTime)
                             @Html.ValidationMessageFor(x => x.LandingTime)
                         </span>
                     </div>
                     <div class="info">
-                        <div>Самолёт:</div>
+                    <div>@InfoTicket.Plane_Ticket_Text</div>
                         <span>
-                            @Html.TextBoxFor(x => x.IdPlane, new { placeholder = "Введи номер самолета" })
+                            @Html.TextBoxFor(x => x.IdPlane)
                             @Html.ValidationMessageFor(x => x.IdPlane)
                         </span>
                     </div>
                 </div>
                 <div class="ticket-footer">
                     <div class="price">
-                        @Html.TextBoxFor(x => x.Cost, new { placeholder = "Введи цену" })
+                    @Html.TextBoxFor(x => x.Cost, new { placeholder = @InfoTicket.Cost_Text })
                         @Html.ValidationMessageFor(x => x.Cost)
                     </div>
                 <button type="submit"
                         class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200" style="margin: 0 auto;display: block;">
-                    Создать
+                    @InfoTicket.Create_Text
                 </button>
                 <div class="seats">
-                    @Html.TextBoxFor(x => x.Count, new { placeholder = "Введи кол-во билетов" })
+                    @Html.TextBoxFor(x => x.Count, new { placeholder = InfoTicket.Count_Seats_Text })
                     @Html.ValidationMessageFor(x => x.Count)
                 </div>
                 </div>

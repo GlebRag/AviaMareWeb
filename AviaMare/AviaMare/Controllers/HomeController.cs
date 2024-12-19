@@ -7,6 +7,8 @@ using AviaMare.Data.Models;
 using AviaMare.Controllers.AuthAttributes;
 using AviaMare.Models.Home.Profile;
 using AviaMare.Data.Interface.Models;
+using Enums.Users;
+using System.Globalization;
 
 namespace AviaMare.Controllers
 {
@@ -189,6 +191,15 @@ namespace AviaMare.Controllers
         public IActionResult Remove(int id)
         {
             _ticketRepository.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        [IsAuthenticated]
+        public IActionResult UpdateLocale(Language language)
+        {
+            var userId = _authService.GetUserId();
+            _userRepositryReal.UpdateLocal(userId, language);
+
             return RedirectToAction("Index");
         }
     }

@@ -1,19 +1,20 @@
 ﻿@using AviaMare.Models.Auth
+@using AviaMare.Localisation
 @model RegisterUserViewModel
 
 <div id="webcrumbs" class="loginAndRegister">
     <div class="w-full bg-white shadow rounded-lg p-6">
-        <h1 class="text-2xl font-title text-neutral-950 mb-4">Регистрация</h1>
+        <h1 class="text-2xl font-title text-neutral-950 mb-4">@Auth.Registration_Text</h1>
         <form class="flex flex-col gap-4" method="post">
             <div class="flex flex-col gap-2">
-                <label for="login" class="text-neutral-950">Логин</label>
+                <label for="login" class="text-neutral-950">@Auth.Login_Box_Text</label>
                 <div class="border border-neutral-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary-500">
                     @Html.TextBoxFor(x => x.UserName, new { @class = "username" })
                     @Html.ValidationMessageFor(x => x.UserName)
                 </div>
             </div>
             <div class="flex flex-col gap-2">
-                <label for="password" class="text-neutral-950">Пароль</label>
+                <label for="password" class="text-neutral-950">@Auth.Password_Box_Text</label>
                 <div class="border border-neutral-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary-500">
                     <div class="password">
                         @Html.PasswordFor(x => x.Password, new { @class = "password" })
@@ -23,7 +24,7 @@
             </div>
             <button type="submit"
                     class="bg-primary-500 text-primary-50 rounded-md py-2">
-                Зарегистрироваться
+                @Auth.Registration_Button_Text
             </button>
         </form>
     </div>
