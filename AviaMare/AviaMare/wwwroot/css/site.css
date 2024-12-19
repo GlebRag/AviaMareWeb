@@ -746,3 +746,11 @@ body {
     height: 48px;
     filter: grayscale(100%) sepia(1) hue-rotate(2deg) saturate(40);
 }
+
+.maskot {
+    background: url("../images/ScreenShiftIdle.png");
+    background-size: 15%;
+    background-repeat: no-repeat;
+    background-position-x: 40px;
+    background-position-y: bottom;
+}
