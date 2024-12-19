@@ -127,9 +127,14 @@ namespace AviaMare.Controllers
         {
             return View();
         }
-        [IsAuthenticated]
+
         public IActionResult Profile()
         {
+            if (!_authService.IsAuthenticated())
+            {
+                return RedirectToAction("Login", "Auth" );
+            }
+
             var viewModel = new ProfileViewModel();
 
             viewModel.UserName = _authService.GetName()!;
