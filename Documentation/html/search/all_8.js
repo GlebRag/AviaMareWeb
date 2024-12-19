@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['ibasecommandrepository_0',['IBaseCommandRepository',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_base_command_repository.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['ibasemodel_1',['IBaseModel',['../interface_avia_mare_1_1_data_1_1_interface_1_1_models_1_1_i_base_model.html',1,'AviaMare::Data::Interface::Models']]],
+  ['ibasequeryrepository_2',['IBaseQueryRepository',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_base_query_repository.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['ibaserepository_3',['IBaseRepository',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_base_repository.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['important_20information_4',['Important information',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
+  ['indexviewmodel_5',['IndexViewModel',['../class_avia_mare_1_1_models_1_1_home_1_1_index_view_model.html',1,'AviaMare::Models::Home']]],
+  ['information_6',['Important information',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
+  ['install_7',['How to install',['../md__r_e_a_d_m_e.html#autotoc_md4',1,'']]],
+  ['iplane_8',['IPlane',['../interface_avia_mare_1_1_data_1_1_interface_1_1_models_1_1_i_plane.html',1,'AviaMare::Data::Interface::Models']]],
+  ['iplanerepository_9',['IPlaneRepository',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_plane_repository.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['iplanerepository_3c_20planedata_20_3e_10',['IPlaneRepository&lt; PlaneData &gt;',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_plane_repository.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['iplanerepositoryreal_11',['IPlaneRepositoryReal',['../interface_avia_mare_1_1_data_1_1_repositories_1_1_i_plane_repository_real.html',1,'AviaMare::Data::Repositories']]],
+  ['isadminattribute_12',['IsAdminAttribute',['../class_avia_mare_1_1_controllers_1_1_auth_attributes_1_1_is_admin_attribute.html',1,'AviaMare::Controllers::AuthAttributes']]],
+  ['isauthenticatedattribute_13',['IsAuthenticatedAttribute',['../class_avia_mare_1_1_controllers_1_1_auth_attributes_1_1_is_authenticated_attribute.html',1,'AviaMare::Controllers::AuthAttributes']]],
+  ['iticket_14',['ITicket',['../interface_avia_mare_1_1_data_1_1_interface_1_1_models_1_1_i_ticket.html',1,'AviaMare::Data::Interface::Models']]],
+  ['iticketrepository_15',['ITicketRepository',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_ticket_repository.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['iticketrepository_3c_20ticketdata_20_3e_16',['ITicketRepository&lt; TicketData &gt;',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_ticket_repository.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['iticketrepositoryreal_17',['ITicketRepositoryReal',['../interface_avia_mare_1_1_data_1_1_repositories_1_1_i_ticket_repository_real.html',1,'AviaMare::Data::Repositories']]],
+  ['iuser_18',['IUser',['../interface_avia_mare_1_1_data_1_1_interface_1_1_models_1_1_i_user.html',1,'AviaMare::Data::Interface::Models']]],
+  ['iuserrepositry_19',['IUserRepositry',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_user_repositry.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['iuserrepositry_3c_20userdata_20_3e_20',['IUserRepositry&lt; UserData &gt;',['../interface_avia_mare_1_1_data_1_1_interface_1_1_repositories_1_1_i_user_repositry.html',1,'AviaMare::Data::Interface::Repositories']]],
+  ['iuserrepositryreal_21',['IUserRepositryReal',['../interface_avia_mare_1_1_data_1_1_repositories_1_1_i_user_repositry_real.html',1,'AviaMare::Data::Repositories']]]
+];

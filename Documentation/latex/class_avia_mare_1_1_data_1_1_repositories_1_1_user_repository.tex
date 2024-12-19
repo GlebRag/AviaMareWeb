@@ -1,0 +1,123 @@
+\doxysection{Avia\+Mare.\+Data.\+Repositories.\+User\+Repository Class Reference}
+\hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository}{}\label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository}\index{AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}}
+Inheritance diagram for Avia\+Mare.\+Data.\+Repositories.\+User\+Repository\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.126582cm]{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a3cf3664f09ea9e69cff1bfb8df3559a4}\label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a3cf3664f09ea9e69cff1bfb8df3559a4} 
+{\bfseries User\+Repository} (\mbox{\hyperlink{class_avia_mare_1_1_data_1_1_web_db_context}{Web\+Db\+Context}} web\+Db\+Context)
+\item 
+\Hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a09b9513cc1bd1a689a6a678e14c1b022}\label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a09b9513cc1bd1a689a6a678e14c1b022} 
+override void {\bfseries Add} (\mbox{\hyperlink{class_avia_mare_1_1_data_1_1_models_1_1_user_data}{User\+Data}} data)
+\item 
+bool \mbox{\hyperlink{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a2101d9ca57c1e8095578a35f644d6e64}{Is\+Admin\+Exist}} ()
+\item 
+bool \mbox{\hyperlink{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a2fd7d185f3db6019d461f92294662b1f}{Is\+Login\+And\+Password\+Is\+Correct}} (string login, string password)
+\item 
+bool \mbox{\hyperlink{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a7dfe1212e268e9e88c48f00874dcbc61}{Is\+Login\+Uniq}} (string login)
+\item 
+\mbox{\hyperlink{class_avia_mare_1_1_data_1_1_models_1_1_user_data}{User\+Data}}? \mbox{\hyperlink{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a3c7e5e5f969f2760a2f9427125b08f5c}{Login}} (string login, string password)
+\item 
+void \mbox{\hyperlink{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_aae2eca6eb58ecc1a1654d21e467aa1e2}{Register}} (string login, string password, Role role=Role.\+User)
+\item 
+void \mbox{\hyperlink{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_ac952ff01803501231c67b341291e69f9}{Update\+Role}} (int user\+Id, Role role)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_avia_mare_1_1_data_1_1_repositories_1_1_base_repository}{Avia\+Mare.\+Data.\+Repositories.\+Base\+Repository$<$ User\+Data $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Base\+Repository} (\mbox{\hyperlink{class_avia_mare_1_1_data_1_1_web_db_context}{Web\+Db\+Context}} web\+Db\+Context)
+\item 
+virtual void {\bfseries Add} (T data)
+\item 
+virtual bool {\bfseries Any} ()
+\item 
+virtual void {\bfseries Delete} (T data)
+\item 
+virtual void {\bfseries Delete} (int id)
+\item 
+virtual ? T {\bfseries Get} (int id)
+\item 
+virtual IEnumerable$<$ T $>$ {\bfseries Get\+All} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interface_avia_mare_1_1_data_1_1_repositories_1_1_i_user_repositry_real}{Avia\+Mare.\+Data.\+Repositories.\+IUser\+Repositry\+Real}}}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_avia_mare_1_1_data_1_1_repositories_1_1_base_repository}{Avia\+Mare.\+Data.\+Repositories.\+Base\+Repository$<$ User\+Data $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_avia_mare_1_1_data_1_1_web_db_context}{Web\+Db\+Context}} {\bfseries \+\_\+web\+Db\+Context}
+\item 
+Db\+Set$<$ T $>$ {\bfseries \+\_\+db\+Set}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a2101d9ca57c1e8095578a35f644d6e64}\index{AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}!IsAdminExist@{IsAdminExist}}
+\index{IsAdminExist@{IsAdminExist}!AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}}
+\doxysubsubsection{\texorpdfstring{IsAdminExist()}{IsAdminExist()}}
+{\footnotesize\ttfamily \label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a2101d9ca57c1e8095578a35f644d6e64} 
+bool Avia\+Mare.\+Data.\+Repositories.\+User\+Repository.\+Is\+Admin\+Exist (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interface_avia_mare_1_1_data_1_1_repositories_1_1_i_user_repositry_real}{Avia\+Mare.\+Data.\+Repositories.\+IUser\+Repositry\+Real}}.
+
+\Hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a2fd7d185f3db6019d461f92294662b1f}\index{AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}!IsLoginAndPasswordIsCorrect@{IsLoginAndPasswordIsCorrect}}
+\index{IsLoginAndPasswordIsCorrect@{IsLoginAndPasswordIsCorrect}!AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}}
+\doxysubsubsection{\texorpdfstring{IsLoginAndPasswordIsCorrect()}{IsLoginAndPasswordIsCorrect()}}
+{\footnotesize\ttfamily \label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a2fd7d185f3db6019d461f92294662b1f} 
+bool Avia\+Mare.\+Data.\+Repositories.\+User\+Repository.\+Is\+Login\+And\+Password\+Is\+Correct (\begin{DoxyParamCaption}\item[{string}]{login}{, }\item[{string}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interface_avia_mare_1_1_data_1_1_repositories_1_1_i_user_repositry_real}{Avia\+Mare.\+Data.\+Repositories.\+IUser\+Repositry\+Real}}.
+
+\Hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a7dfe1212e268e9e88c48f00874dcbc61}\index{AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}!IsLoginUniq@{IsLoginUniq}}
+\index{IsLoginUniq@{IsLoginUniq}!AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}}
+\doxysubsubsection{\texorpdfstring{IsLoginUniq()}{IsLoginUniq()}}
+{\footnotesize\ttfamily \label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a7dfe1212e268e9e88c48f00874dcbc61} 
+bool Avia\+Mare.\+Data.\+Repositories.\+User\+Repository.\+Is\+Login\+Uniq (\begin{DoxyParamCaption}\item[{string}]{login}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interface_avia_mare_1_1_data_1_1_repositories_1_1_i_user_repositry_real}{Avia\+Mare.\+Data.\+Repositories.\+IUser\+Repositry\+Real}}.
+
+\Hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a3c7e5e5f969f2760a2f9427125b08f5c}\index{AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}!Login@{Login}}
+\index{Login@{Login}!AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}}
+\doxysubsubsection{\texorpdfstring{Login()}{Login()}}
+{\footnotesize\ttfamily \label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_a3c7e5e5f969f2760a2f9427125b08f5c} 
+\mbox{\hyperlink{class_avia_mare_1_1_data_1_1_models_1_1_user_data}{User\+Data}}? Avia\+Mare.\+Data.\+Repositories.\+User\+Repository.\+Login (\begin{DoxyParamCaption}\item[{string}]{login}{, }\item[{string}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interface_avia_mare_1_1_data_1_1_repositories_1_1_i_user_repositry_real}{Avia\+Mare.\+Data.\+Repositories.\+IUser\+Repositry\+Real}}.
+
+\Hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_aae2eca6eb58ecc1a1654d21e467aa1e2}\index{AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}!Register@{Register}}
+\index{Register@{Register}!AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}}
+\doxysubsubsection{\texorpdfstring{Register()}{Register()}}
+{\footnotesize\ttfamily \label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_aae2eca6eb58ecc1a1654d21e467aa1e2} 
+void Avia\+Mare.\+Data.\+Repositories.\+User\+Repository.\+Register (\begin{DoxyParamCaption}\item[{string}]{login}{, }\item[{string}]{password}{, }\item[{Role}]{role}{ = {\ttfamily Role\+:\+:User}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interface_avia_mare_1_1_data_1_1_repositories_1_1_i_user_repositry_real}{Avia\+Mare.\+Data.\+Repositories.\+IUser\+Repositry\+Real}}.
+
+\Hypertarget{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_ac952ff01803501231c67b341291e69f9}\index{AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}!UpdateRole@{UpdateRole}}
+\index{UpdateRole@{UpdateRole}!AviaMare.Data.Repositories.UserRepository@{AviaMare.Data.Repositories.UserRepository}}
+\doxysubsubsection{\texorpdfstring{UpdateRole()}{UpdateRole()}}
+{\footnotesize\ttfamily \label{class_avia_mare_1_1_data_1_1_repositories_1_1_user_repository_ac952ff01803501231c67b341291e69f9} 
+void Avia\+Mare.\+Data.\+Repositories.\+User\+Repository.\+Update\+Role (\begin{DoxyParamCaption}\item[{int}]{user\+Id}{, }\item[{Role}]{role}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interface_avia_mare_1_1_data_1_1_repositories_1_1_i_user_repositry_real}{Avia\+Mare.\+Data.\+Repositories.\+IUser\+Repositry\+Real}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Avia\+Mare/\+Avia\+Mare.\+Data/\+Repositories/User\+Repositoriy.\+cs\end{DoxyCompactItemize}
