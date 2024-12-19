@@ -663,6 +663,17 @@ body {
     width: 1500px;
     display: flex;
 }
+.profile{
+    height: 100vh;
+}
+.profile-tickets {
+    flex-wrap: wrap;
+    height: 600px;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
 .ticket {
     background: #ffffff;
     border-radius: 10px;

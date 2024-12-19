@@ -1,0 +1,58 @@
+﻿@using AviaMare.Models.Home.Profile
+
+@model ProfileViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="profile">
+    <div class="username">
+        <h1>@Model.UserName</h1>
+    </div>
+
+    @* <div>
+        Avatar:
+        <img class="avatar" src="@Model.AvatarUrl" />
+    </div>
+    <div>
+        <form action="/MoviePoster/UpdateAvatar" method="post" enctype="multipart/form-data">
+            <input type="file" name="avatar" />
+            <button type="submit">Обновить аватар</button>
+        </form>
+    </div> *@
+    <div style="margin: 10px">
+        Купленные вами билеты:
+    </div>
+    @if (Model.Tickets is not null)
+    {
+    <div class="pofile-tickets">
+        @foreach (var ticket in Model.Tickets)
+        {
+            <div class="ticket">
+                <div class="ticket-header">
+                    <h2>От: @ticket.Departure — До: @ticket.Destination</h2>
+                </div>
+                <div class="ticket-body">
+                    <div class="info">
+                        <div>Время в полёте:</div>
+                        <span>@ticket.Time</span>
+                    </div>
+                    <div class="info">
+                        <div>Время вылета:</div>
+                        <span>@ticket.TakeOffTime</span>
+                    </div>
+                    <div class="info">
+                        <div>Время прилёта:</div>
+                        <span>@ticket.LandingTime</span>
+                    </div>
+                    <div class="info">
+                        <div>Самолёт:</div>
+                        <span>@ticket.IdPlane</span>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+    }
+</div>

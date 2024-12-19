@@ -1,15 +1,11 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using AviaMare.Models;
 using AviaMare.Models.Home;
 using AviaMare.Services;
-using AviaMare.Data.Interface.Repositories;
 using AviaMare.Data.Repositories;
 using AviaMare.Data;
-using Microsoft.AspNetCore.Hosting;
 using AviaMare.Data.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using AviaMare.Controllers.AuthAttributes;
+using AviaMare.Models.Home.Profile;
 
 namespace AviaMare.Controllers
 {
@@ -52,6 +48,7 @@ namespace AviaMare.Controllers
                         Cost = dbTicket.Cost,
                         TakeOffTime = dbTicket.TakeOffTime,
                         LandingTime = dbTicket.LandingTime,
+                        Count = dbTicket.Count
                     }
                 )
                 .ToList();  
@@ -72,6 +69,7 @@ namespace AviaMare.Controllers
                     Cost = 5,
                     TakeOffTime = DateTime.Now,
                     LandingTime = DateTime.Now,
+                    Count = 0
                 };
 
                 _ticketRepository.Add(dataModel);
@@ -104,7 +102,8 @@ namespace AviaMare.Controllers
                 Time = viewModel.Time,
                 Cost = viewModel.Cost,
                 TakeOffTime = viewModel.TakeOffTime,
-                LandingTime = viewModel.LandingTime
+                LandingTime = viewModel.LandingTime,
+                Count = viewModel.Count
             };
 
             _ticketRepository.Create(dataTicket);
@@ -112,6 +111,13 @@ namespace AviaMare.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+
+        public IActionResult LinkUserAndTicket(int ticketId, int userId)
+        {
+            _ticketRepository.BuyTicket(ticketId, userId);
+            return RedirectToAction("Index");
+        }
         public IActionResult Privacy()
         {
             return View();
@@ -120,6 +126,41 @@ namespace AviaMare.Controllers
         public IActionResult Forbidden()
         {
             return View();
+        }
+
+        public IActionResult Profile()
+        {
+            if (!_authService.IsAuthenticated())
+            {
+                return RedirectToAction("Login", "Auth" );
+            }
+
+            var viewModel = new ProfileViewModel();
+
+            viewModel.UserName = _authService.GetName()!;
+
+            var userId = _authService.GetUserId()!.Value;
+
+            //viewModel.AvatarUrl = _userRepositryReal.GetAvatarUrl(userId);
+
+            var ticketForUser = _ticketRepository.GetTicket(userId);
+            if (ticketForUser.All(ticket => ticket == null))
+            {
+                return View(viewModel);
+            }
+            viewModel.Tickets = ticketForUser
+                .Select(x => new TicketShortInfoViewModel
+                {
+                    Destination = x.Destination,
+                    Departure = x.Departure,
+                    IdPlane = x.IdPlane,
+                    Time = x.Time,
+                    TakeOffTime = x.TakeOffTime,
+                    LandingTime = x.LandingTime
+                })
+                .ToList();
+
+            return View(viewModel);
         }
 
         [HttpGet]
