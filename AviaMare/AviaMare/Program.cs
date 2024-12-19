@@ -3,8 +3,19 @@ using AviaMare.Data.Interface.Repositories;
 using AviaMare.Data.Repositories;
 using AviaMare.Services;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Настройка Serilog
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console() // Логирование в консоль
+    .WriteTo.File("logs/latest.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 1) // Логирование в файл
+    .MinimumLevel.Information() // Уровень логирования
+    .CreateLogger();
+
+// Встраиваем Serilog в ASP.NET Core
+builder.Host.UseSerilog();
 
 builder.Services
     .AddAuthentication(AuthService.AUTH_TYPE_KEY)
@@ -53,4 +64,16 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+Log.Information("Application starting...");
+try
+{
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application crashed!");
+}
+finally
+{
+    Log.CloseAndFlush(); // Завершаем логирование корректно
+}
