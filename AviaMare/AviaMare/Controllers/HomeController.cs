@@ -6,6 +6,7 @@ using AviaMare.Data;
 using AviaMare.Data.Models;
 using AviaMare.Controllers.AuthAttributes;
 using AviaMare.Models.Home.Profile;
+using AviaMare.Data.Interface.Models;
 
 namespace AviaMare.Controllers
 {
@@ -56,6 +57,27 @@ namespace AviaMare.Controllers
             return View(ticketsViewModels);
         }
 
+        public IActionResult SearchTicket(string departure, string destination, DateTime takeOffTime, decimal cost, string sortOrder)
+        {
+
+            var viewModels = _ticketRepository
+                .SearchTicket(departure, destination, takeOffTime, cost, sortOrder)
+                .Select(dbTicket => new TicketViewModel
+                {
+                    Id = dbTicket.Id,
+                    Destination = dbTicket.Destination,
+                    Departure = dbTicket.Departure,
+                    IdPlane = dbTicket.IdPlane,
+                    Time = dbTicket.Time,
+                    Cost = dbTicket.Cost,
+                    TakeOffTime = dbTicket.TakeOffTime,
+                    LandingTime = dbTicket.LandingTime,
+                    Count = dbTicket?.Count ?? 0
+                })
+                .ToList();
+
+            return View("Index", viewModels);
+        }
         private void GenerateDefaultTicket()
         {
             for (int i = 0; i < 2; i++)

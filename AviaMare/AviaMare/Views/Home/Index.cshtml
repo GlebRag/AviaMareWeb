@@ -5,17 +5,28 @@
 @inject UserService userService
 
 <script>
-    function updateValue() {
+    function updateHiddenValue(hiddenInputId, value) {
+        document.getElementById(hiddenInputId).value = value ? value : 'null';
+    }
+
+    function updateRangeValue() {
         const rangeInput = document.getElementById('priceRange');
-        const currentValue = document.getElementById('currentValue');
-        currentValue.textContent = rangeInput.value;
+        const currentValueDisplay = document.getElementById('currentValue');
+        currentValueDisplay.textContent = rangeInput.value;
+        document.getElementById('costInput').value = rangeInput.value;
+    }
+
+    function updateSortOrder() {
+        const sortSelect = document.getElementById('sortOrder');
+        const hiddenSortOrder = document.getElementById('hiddenSortOrder');
+        hiddenSortOrder.value = sortSelect.value; 
     }
 </script>
 
 <div class="py-10">
     <section class="flex gap-8 items-start">
         <div class="basis-1/3">
-            <form class="bg-orange-50 p-6 rounded-md mb-6">
+            <form class="bg-orange-50 p-6 rounded-md mb-6" action="/Home/SearchTicket" method="post">
                 <h2 class="text-orange-950 font-bold text-lg mb-4">
                     Поиск рейсов
                 </h2>
@@ -24,29 +35,50 @@
                         <span class="text-neutral-950">Откуда</span>
                         <input type="text"
                                placeholder="например, Нью-Йорк"
-                               class="border border-orange-300 p-2 rounded-md" />
+                               class="border border-orange-300 p-2 rounded-md"
+                               oninput="updateHiddenValue('fromInput', this.value)" />
+                        <input type="hidden" name="departure" id="fromInput" value="null" />
                     </label>
+
                     <label class="flex flex-col">
                         <span class="text-neutral-950">Куда</span>
                         <input type="text"
                                placeholder="например, Лос-Анджелес"
-                               class="border border-orange-300 p-2 rounded-md" />
+                               class="border border-orange-300 p-2 rounded-md"
+                               oninput="updateHiddenValue('toInput', this.value)" />
+                        <input type="hidden" name="destination" id="toInput" value="null" />
                     </label>
+
                     <label class="flex flex-col">
                         <span class="text-neutral-950">Дата</span>
                         <input type="date"
-                               class="border border-orange-300 p-2 rounded-md" />
+                               class="border border-orange-300 p-2 rounded-md"
+                               oninput="updateHiddenValue('dateInput', this.value)" />
+                        <input type="hidden" name="takeOffTime" id="dateInput" value="null" />
                     </label>
+
                     <label class="flex flex-col">
                         <span class="text-neutral-950">Ценовой диапазон</span>
-                        <input type="range" min="100" max="1000" value="100" class="w-full" id="priceRange" oninput="updateValue()" />
+                        <input type="range" min="0" max="1000" value="1000" class="w-full" id="priceRange" oninput="updateRangeValue()" />
                         <div class="flex justify-between">
-                            <span>100</span>
-                            <span id="currentValue">100</span>
+                            <span>0</span>
+                            <span id="currentValue">1000</span>
                             <span>1000</span>
                         </div>
                     </label>
-                    <button class="bg-orange-500 text-white py-2 px-4 rounded-md">
+
+                    <label class="flex flex-col">
+                        <span class="text-neutral-950">Сортировка</span>
+                        <select id="sortOrder" onchange="updateSortOrder()">   
+                            <option value="desc">По убыванию</option>
+                            <option value="asc">По возрастанию</option>
+                        </select>
+                    </label>
+
+                    <input type="hidden" name="cost" id="costInput" value="1000" />
+                    <input type="hidden" name="sortOrder" id="hiddenSortOrder" value="desc" />
+
+                    <button class="bg-orange-500 text-white py-2 px-4 rounded-md" type="submit">
                         Найти
                     </button>
                 </div>

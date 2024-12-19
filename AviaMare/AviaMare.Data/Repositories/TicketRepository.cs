@@ -8,6 +8,8 @@ using System;
 using System.Linq;
 using AviaMare.Data.Interface.Models;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Data.SqlClient;
+using System.Text;
 
 namespace AviaMare.Data.Repositories
 {
@@ -17,6 +19,7 @@ namespace AviaMare.Data.Repositories
         void Create(TicketData dataTicket);
         IEnumerable<TicketData> GetTicket(int userId);
         bool IsThisUserBoughtThisTicket(int ticketId, int userId);
+        IEnumerable<TicketShortInfo> SearchTicket(string departure, string destination, DateTime? takeOffTime, decimal? cost, string sortOrder);
     }
 
     public class TicketRepository : BaseRepository<TicketData>, ITicketRepositoryReal
@@ -60,6 +63,65 @@ namespace AviaMare.Data.Repositories
             }
             return false;
 
+        }
+
+        public IEnumerable<TicketShortInfo> SearchTicket(string departure, string destination, DateTime? takeOffTime, decimal? cost, string sortOrder)
+        {
+            var parameters = new List<SqlParameter>();
+            var sql = new StringBuilder("SELECT * FROM dbo.Tickets WHERE 1=1"); //Это условие всгеда истинно
+
+            if (departure != "null")
+            {
+                sql.Append(" AND Departure = @Departure");
+                parameters.Add(new SqlParameter("@Departure", departure));
+            }
+
+            if (destination != "null")
+            {
+                sql.Append(" AND Destination = @Destination");
+                parameters.Add(new SqlParameter("@Destination", destination));
+            }
+
+            // Условия для TakeOffTime
+            if (takeOffTime.HasValue)
+            {
+                if (takeOffTime.Value == DateTime.MinValue) // Если дата равна 01.01.0001
+                {
+                    // От сегодняшней даты и после (использовать потом)
+                    //sql.Append(" AND TakeOffTime >= @CurrentDate");
+                    //parameters.Add(new SqlParameter("@CurrentDate", DateTime.Now.Date));
+
+                    //От сегодняшней даты и до(временно)
+                    sql.Append(" AND TakeOffTime <= @CurrentDate");
+                    parameters.Add(new SqlParameter("@CurrentDate", DateTime.Now.Date));
+                }
+                else
+                {
+                    sql.Append(" AND CAST(TakeOffTime AS DATE) = @TakeOffTime");
+                    parameters.Add(new SqlParameter("@TakeOffTime", takeOffTime.Value.Date));
+                }
+            }
+
+            if (cost.HasValue)
+            {
+                sql.Append(" AND Cost <= @Cost");
+                parameters.Add(new SqlParameter("@Cost", cost.Value));
+                if (sortOrder == "asc")
+                {
+                    sql.Append(" ORDER BY Cost ASC");
+                }
+                if(sortOrder == "desc")
+                {
+                    sql.Append(" ORDER BY Cost DESC");
+                }
+            }
+
+            var result = _webDbContext
+                .Database
+                .SqlQueryRaw<TicketShortInfo>(sql.ToString(), parameters.ToArray())
+                .ToList();
+
+            return result;
         }
 
         //TODO: FindByDestination, FindByDeparture, FindByDate, FindByMaxCost, FindByMinCost, FindByTime
