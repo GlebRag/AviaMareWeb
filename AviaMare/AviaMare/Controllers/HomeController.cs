@@ -9,6 +9,7 @@ using AviaMare.Models.Home.Profile;
 using AviaMare.Data.Interface.Models;
 using Enums.Users;
 using System.Globalization;
+using Azure.Identity;
 
 namespace AviaMare.Controllers
 {
@@ -200,6 +201,24 @@ namespace AviaMare.Controllers
             var userId = _authService.GetUserId();
             _userRepositryReal.UpdateLocal(userId, language);
 
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult SaveTicket(string Departure, string Destination, DateTime TakeOffTime, int IdPlane, int Time)
+        {
+            var userName = _authService.GetName();
+            var userId = _authService.GetUserId()!.Value;
+            var dataTicket = new TicketData
+            {
+                Destination = Destination,
+                Departure = Departure,
+                IdPlane = IdPlane,
+                Time = Time,
+                TakeOffTime = TakeOffTime,
+            };
+
+
+            _ticketRepository.SaveTicket(dataTicket, userName);
             return RedirectToAction("Index");
         }
     }

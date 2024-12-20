@@ -23,36 +23,45 @@
     </div> *@
     <div style="margin: 10px">
     </div>
-    @if (Model.Tickets is not null)
-    {
-    <div class="pofile-tickets">
-        @foreach (var ticket in Model.Tickets)
+    <form class="bg-orange-50 p-6 rounded-md mb-6" action="/Home/SaveTicket" method="post">
+        @if (Model.Tickets is not null)
         {
-            <div class="ticket">
-                <div class="ticket-header">
-                        <h2>@InfoTicket.From_Ticket_Text @ticket.Departure — @InfoTicket.To_Ticket_Text @ticket.Destination</h2>
+        <div class="pofile-tickets">
+            @foreach (var ticket in Model.Tickets)
+            {
+                <div class="ticket">
+                    <div class="ticket-header">
+                            <h2>@InfoTicket.From_Ticket_Text @ticket.Departure — @InfoTicket.To_Ticket_Text @ticket.Destination</h2>
+                    </div>
+                    <div class="ticket-body">
+                        <div class="info">
+                                <div>@InfoTicket.Flight_Time_Ticket_Text</div>
+                            <span>@ticket.Time</span>
+                        </div>
+                        <div class="info">
+                                <div>@InfoTicket.Departure_Time_Ticket_Text</div>
+                            <span>@ticket.TakeOffTime</span>
+                        </div>
+                        <div class="info">
+                                <div>@InfoTicket.Arrival_Time_Ticket_Text</div>
+                            <span>@ticket.LandingTime</span>
+                        </div>
+                        <div class="info">
+                                <div>@InfoTicket.Plane_Ticket_Text</div>
+                            <span>@ticket.IdPlane</span>
+                        </div>
+                    </div>
+                        <input type="hidden" name="Destination" value="@ticket.Destination" />
+                        <input type="hidden" name="Departure" value="@ticket.Departure" />
+                        <input type="hidden" name="IdPlane" value="@ticket.IdPlane" />
+                        <input type="hidden" name="Time" value="@ticket.Time" />
+                        <input type="hidden" name="TakeOffTime" value="@ticket.TakeOffTime" />
                 </div>
-                <div class="ticket-body">
-                    <div class="info">
-                            <div>@InfoTicket.Flight_Time_Ticket_Text</div>
-                        <span>@ticket.Time</span>
-                    </div>
-                    <div class="info">
-                            <div>@InfoTicket.Departure_Time_Ticket_Text</div>
-                        <span>@ticket.TakeOffTime</span>
-                    </div>
-                    <div class="info">
-                            <div>@InfoTicket.Arrival_Time_Ticket_Text</div>
-                        <span>@ticket.LandingTime</span>
-                    </div>
-                    <div class="info">
-                            <div>@InfoTicket.Plane_Ticket_Text</div>
-                        <span>@ticket.IdPlane</span>
-                    </div>
-                </div>
-
-            </div>
+            }
+                <button class="bg-orange-500 text-white py-2 px-4 rounded-md" type="submit">
+                    Сохранить Билет
+                </button>
+        </div>
         }
-    </div>
-    }
+    </form>
 </div>

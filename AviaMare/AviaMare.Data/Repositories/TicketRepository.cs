@@ -10,6 +10,12 @@ using AviaMare.Data.Interface.Models;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Data.SqlClient;
 using System.Text;
+using System;
+using System.IO;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace AviaMare.Data.Repositories
 {
@@ -19,6 +25,7 @@ namespace AviaMare.Data.Repositories
         void Create(TicketData dataTicket);
         IEnumerable<TicketData> GetTicket(int userId);
         bool IsThisUserBoughtThisTicket(int ticketId, int userId);
+        void SaveTicket(TicketData dataTicket, string? userName);
         IEnumerable<TicketShortInfo> SearchTicket(string departure, string destination, DateTime? takeOffTime, decimal? cost, string sortOrder);
     }
 
@@ -63,6 +70,72 @@ namespace AviaMare.Data.Repositories
             }
             return false;
 
+        }
+
+        public void SaveTicket(TicketData dataTicket, string? userName)
+        {
+            string passengerName = userName ?? string.Empty;
+            string flightNumber = dataTicket.IdPlane.ToString();
+            string departure = dataTicket.Departure;
+            string destination = dataTicket.Destination;
+            string departureDate = dataTicket.TakeOffTime.ToString();
+            string transactionId = "TXN123456789";
+            string outputFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "TicketReceipt.pdf");
+            try
+            {
+                // Создание нового документа
+                PdfDocument document = new PdfDocument();
+                document.Info.Title = "Чек оплаты авиабилета";
+
+                // Добавление страницы
+                PdfPage page = document.AddPage();
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                // Шрифты
+                XFont headerFont = new XFont("Arial", 18, XFontStyleEx.Bold); // Заголовок
+                XFont boldFont = new XFont("Arial", 12, XFontStyleEx.Regular); // Жирный текст
+                XFont regularFont = new XFont("Arial", 12, XFontStyleEx.Regular); // Обычный текст
+
+                // Заголовок
+                gfx.DrawString("Чек оплаты авиабилета", headerFont, XBrushes.Black,
+                    new XRect(0, 20, page.Width, 40), XStringFormats.Center);
+
+                // Основная информация
+                double y = 80; // начальная позиция по вертикали
+                double lineHeight = 20;
+
+                gfx.DrawString($"Имя пассажира: {passengerName}", boldFont, XBrushes.Black, new XRect(40, y, page.Width - 80, lineHeight), XStringFormats.TopLeft);
+                y += lineHeight;
+                gfx.DrawString($"Номер рейса: {flightNumber}", regularFont, XBrushes.Black, new XRect(40, y, page.Width - 80, lineHeight), XStringFormats.TopLeft);
+                y += lineHeight;
+                gfx.DrawString($"Место отправления: {departure}", regularFont, XBrushes.Black, new XRect(40, y, page.Width - 80, lineHeight), XStringFormats.TopLeft);
+                y += lineHeight;
+                gfx.DrawString($"Место назначения: {destination}", regularFont, XBrushes.Black, new XRect(40, y, page.Width - 80, lineHeight), XStringFormats.TopLeft);
+                y += lineHeight;
+                gfx.DrawString($"Дата вылета: {departureDate}", regularFont, XBrushes.Black, new XRect(40, y, page.Width - 80, lineHeight), XStringFormats.TopLeft);
+                y += lineHeight;
+
+                gfx.DrawLine(XPens.Black, 40, y, page.Width - 40, y); // горизонтальная линия
+                y += lineHeight;
+
+                gfx.DrawString($"ID транзакции: {transactionId}", regularFont, XBrushes.Black, new XRect(40, y, page.Width - 80, lineHeight), XStringFormats.TopLeft);
+                y += lineHeight;
+
+                gfx.DrawLine(XPens.Black, 40, y, page.Width - 40, y); // горизонтальная линия
+                y += lineHeight;
+
+                // Благодарность с правильным выравниванием по базовой линии
+                gfx.DrawString("Спасибо за покупку и приятного полета!", regularFont, XBrushes.Black,
+                    new XRect(40, y, page.Width - 80, 0), XStringFormats.TopLeft);  // Высота прямоугольника = 0
+
+                // Сохранение PDF
+                document.Save(outputFile);
+                Console.WriteLine($"Чек успешно создан: {outputFile}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Произошла ошибка: {ex.Message}");
+            }
         }
 
         public IEnumerable<TicketShortInfo> SearchTicket(string departure, string destination, DateTime? takeOffTime, decimal? cost, string sortOrder)
