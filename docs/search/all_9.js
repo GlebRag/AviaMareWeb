@@ -1,0 +1,13 @@
+var searchData=
+[
+  ['languageforuser_0',['LanguageForUser',['../class_avia_mare_1_1_data_1_1_migrations_1_1_language_for_user.html',1,'AviaMare::Data::Migrations']]],
+  ['license_20mit_1',['The MIT License (MIT)',['../md__avia_mare_2_avia_mare_2wwwroot_2lib_2jquery-validation_2_l_i_c_e_n_s_e.html',1,'']]],
+  ['links_2',['Links',['../md__r_e_a_d_m_e.html#autotoc_md6',1,'']]],
+  ['localizationmiddleware_3',['LocalizationMiddleWare',['../class_avia_mare_1_1_custom_middle_wares_1_1_localization_middle_ware.html',1,'AviaMare::CustomMiddleWares']]],
+  ['login_5fbox_5ftext_4',['Login_Box_Text',['../class_avia_mare_1_1_localisation_1_1_auth.html#a3cb77f1cb64e78204d8fe44ce55182f8',1,'AviaMare.Localisation.Auth.Login_Box_Text'],['../class_avia_mare_1_1_localisation_1_1_auth_______xD0_x9A_xD0_xBE_xD0_xBF_xD0_xB8_xD1_x80_xD0_xBE_xD0_xB2_xD0_xB0_xD1_x82_xD1_x8C.html#af50d6b02a0960170f2b1039c3a2ef5b6',1,'AviaMare.Localisation.Auth___Копировать.Login_Box_Text']]],
+  ['login_5fbutton_5ftext_5',['Login_Button_Text',['../class_avia_mare_1_1_localisation_1_1_auth.html#ad1afd58b22cf04268815a29b50b755e7',1,'AviaMare.Localisation.Auth.Login_Button_Text'],['../class_avia_mare_1_1_localisation_1_1_auth_______xD0_x9A_xD0_xBE_xD0_xBF_xD0_xB8_xD1_x80_xD0_xBE_xD0_xB2_xD0_xB0_xD1_x82_xD1_x8C.html#a8b995320a52f2f1e3b591b138a5446dc',1,'AviaMare.Localisation.Auth___Копировать.Login_Button_Text'],['../class_avia_mare_1_1_localisation_1_1_main_page.html#ae588943d1b57051660493b516d359716',1,'AviaMare.Localisation.MainPage.Login_Button_Text'],['../class_avia_mare_1_1_localisation_1_1_main_page_______xD0_x9A_xD0_xBE_xD0_xBF_xD0_xB8_xD1_x80_xD02766d9ad1015bca0e7e990d11faaa950.html#a9481062adb5237dcb60c10e1184083ea',1,'AviaMare.Localisation.MainPage___Копировать.Login_Button_Text']]],
+  ['login_5ftext_6',['Login_Text',['../class_avia_mare_1_1_localisation_1_1_auth.html#a869ae50ca24dd5ab2e077dfce62e1c3b',1,'AviaMare.Localisation.Auth.Login_Text'],['../class_avia_mare_1_1_localisation_1_1_auth_______xD0_x9A_xD0_xBE_xD0_xBF_xD0_xB8_xD1_x80_xD0_xBE_xD0_xB2_xD0_xB0_xD1_x82_xD1_x8C.html#ac8afe5299cdbe29f146cfbd6e35b1daa',1,'AviaMare.Localisation.Auth___Копировать.Login_Text']]],
+  ['loginandpasswordiscorrect_7',['LoginAndPasswordIsCorrect',['../class_avia_mare_1_1_models_1_1_custom_validation_attrubites_1_1_login_and_password_is_correct.html',1,'AviaMare::Models::CustomValidationAttrubites']]],
+  ['loginuserviewmodel_8',['LoginUserViewModel',['../class_avia_mare_1_1_models_1_1_auth_1_1_login_user_view_model.html',1,'AviaMare::Models::Auth']]],
+  ['logout_5fbutton_5ftext_9',['LogOut_Button_Text',['../class_avia_mare_1_1_localisation_1_1_main_page.html#abfce541f8932f3f97004fc3cd57d94e0',1,'AviaMare::Localisation::MainPage']]]
+];
