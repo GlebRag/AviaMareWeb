@@ -30,7 +30,6 @@
         $.get(url)
             .then(function (messages) {
                 messages.forEach((message) => createNewMessage(message));
-                console.log('1');
             });
     }
 

@@ -784,10 +784,10 @@ body {
     cursor: pointer;
 }
 
-.chat-container {
+.forbidden {
     height: 100vh;
 }
 
-.forbidden {
-    height: 100vh;
+.update-avatar-button {
+    display: none;
 }

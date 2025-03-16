@@ -164,8 +164,11 @@ namespace AviaMare.Controllers
         [IsAuthenticated]
         public IActionResult Chat()
         {
+            var viewModel = new ProfileViewModel();
 
-            return View();
+            viewModel.UserName = _authService.GetName();
+
+            return View(viewModel);
         }
 
         public IActionResult Profile()
@@ -207,6 +210,10 @@ namespace AviaMare.Controllers
         [HttpPost]
         public IActionResult UpdateAvatar(IFormFile avatar)
         {
+            if (avatar == null)
+            {
+                return RedirectToAction("Profile");
+            }
             var webRootPath = _webHostEnvironment.WebRootPath;
 
             var userId = _authService.GetUserId();

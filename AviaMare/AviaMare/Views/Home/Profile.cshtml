@@ -6,6 +6,11 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@section Scripts {
+    <script src="~/js/profile.js"></script>
+}
+
 <div class="profile">
     <div class="username">
         <h1>@Model.UserName</h1>
@@ -17,8 +22,8 @@
     </div>
     <div>
         <form action="/Home/UpdateAvatar" method="post" enctype="multipart/form-data">
-            <input type="file" name="avatar" />
-            <button type="submit">Обновить аватар</button>
+            <input class="update-avatar-input" type="file" name="avatar" />
+            <button class="update-avatar-button" type="submit">Обновить аватар</button>
         </form>
     </div>
     <div style="margin: 10px">

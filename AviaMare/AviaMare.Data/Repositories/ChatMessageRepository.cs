@@ -45,7 +45,7 @@ namespace AviaMare.Data.Repositories
 
         public List<string> GetLastMessages()
         {
-            var count = 20;
+            var count = 10;
             return _dbSet
                     .OrderByDescending(x => x.CreationTime)
                     .Take(count)

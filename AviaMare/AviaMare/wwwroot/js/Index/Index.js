@@ -14,6 +14,11 @@
 
         event.preventDefault();
     });
+    $(".profile .update-avatar-input").click(function () {
+        const profileBlock = $(this).closest(".profile");
+        profileBlock.find(".update-avatar-button").css("display", "inline");
+
+    });
 
     function init() {
         const url = new URL(document.location.href);
