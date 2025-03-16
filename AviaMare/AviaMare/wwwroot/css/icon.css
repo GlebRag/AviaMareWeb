@@ -1,0 +1,29 @@
+﻿.icon::before {
+    content: ' ';
+    display: flex;
+    width: 24px;
+    height: 24px;
+    /*background-color: aqua;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.icon.like::before {
+    background-image: url('/images/icon/favorite_24_normal.svg');
+}
+
+.icon.like-pushed::before {
+    background-image: url('/images/icon/favorite_24_pushed.svg');
+}
+
+.icon.arrow-down::before {
+    background-image: url('/images/icon/keyboard_arrow_down_24.svg');
+}
+
+.icon.arrow-right::before {
+    background-image: url('/images/icon/keyboard_arrow_right_24.svg');
+}
+
+.icon.close::before {
+    background-image: url('/images/icon/close_24.svg');
+}

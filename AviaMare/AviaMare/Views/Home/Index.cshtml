@@ -5,6 +5,7 @@
 @inject AuthService authService
 @inject UserService userService
 
+
 <script>
     function updateHiddenValue(hiddenInputId, value) {
         document.getElementById(hiddenInputId).value = value ? value : 'null';
@@ -20,7 +21,7 @@
     function updateSortOrder() {
         const sortSelect = document.getElementById('sortOrder');
         const hiddenSortOrder = document.getElementById('hiddenSortOrder');
-        hiddenSortOrder.value = sortSelect.value; 
+        hiddenSortOrder.value = sortSelect.value;
     }
 </script>
 
@@ -70,7 +71,7 @@
 
                     <label class="flex flex-col">
                         <span class="text-neutral-950">@Home.Sort_Text</span>
-                        <select id="sortOrder" onchange="updateSortOrder()">   
+                        <select id="sortOrder" onchange="updateSortOrder()">
                             <option value="desc">@Home.Desc_Text</option>
                             <option value="asc">@Home.Asc_Text</option>
                         </select>
@@ -113,41 +114,43 @@
                 @Home.Tickets_Text
             </h2>
             <div class="ticket-section">
-    <div class="tickets">
-        @foreach (var ticket in Model)
-        {
-            <div class="ticket">
-                <div class="ticket-header">
-                    <h2> @InfoTicket.From_Ticket_Text
-                        @ticket.Departure
-                        @InfoTicket.To_Ticket_Text
-                        @ticket.Destination</h2>
-                    @if (authService.IsAviaMareModerator())
+                <div class="tickets">
+                    @foreach (var ticket in Model)
                     {
-                        <a class="tag" href="/Home/Remove?id=@ticket.Id">Delete</a>
-                    }
-                </div>
-                <div class="ticket-body">
-                    <div class="info">
-                        <div>@InfoTicket.Flight_Time_Ticket_Text</div>
-                        <span>@ticket.Time</span>
-                    </div>
-                    <div class="info">
-                        <div>@InfoTicket.Departure_Time_Ticket_Text</div>
-                        <span>@ticket.TakeOffTime</span>
-                    </div>
-                    <div class="info">
-                        <div>@InfoTicket.Arrival_Time_Ticket_Text</div>
-                        <span>@ticket.LandingTime</span>
-                    </div>
-                    <div class="info">
-                        <div>@InfoTicket.Plane_Ticket_Text</div>
-                        <span>@ticket.IdPlane</span>
-                    </div>
-                </div>
-                <div class="ticket-footer">
-                    <div class="price">@ticket.Cost</div>
-                                
+                        <div class="ticket" data-id="@ticket.Id">
+                            <div class="ticket-header">
+                                <h2>
+                                    @InfoTicket.From_Ticket_Text
+                                    @ticket.Departure
+                                    @InfoTicket.To_Ticket_Text
+                                    @ticket.Destination
+                                </h2>
+                                @if (authService.IsAviaMareModerator()) // Delete button
+                                {
+                                    <a class="tag delete" href="#" data-id="@ticket.Id">Delete</a>
+                                }
+                            </div>
+                            <div class="ticket-body">
+                                <div class="info">
+                                    <div>@InfoTicket.Flight_Time_Ticket_Text</div>
+                                    <span>@ticket.Time</span>
+                                </div>
+                                <div class="info">
+                                    <div>@InfoTicket.Departure_Time_Ticket_Text</div>
+                                    <span>@ticket.TakeOffTime</span>
+                                </div>
+                                <div class="info">
+                                    <div>@InfoTicket.Arrival_Time_Ticket_Text</div>
+                                    <span>@ticket.LandingTime</span>
+                                </div>
+                                <div class="info">
+                                    <div>@InfoTicket.Plane_Ticket_Text</div>
+                                    <span>@ticket.IdPlane</span>
+                                </div>
+                            </div>
+                            <div class="ticket-footer">
+                                <div class="price">@ticket.Cost</div>
+
                                 @if (authService.IsAuthenticated())
                                 {
                                     <form action="/Home/LinkUserAndTicket" method="post">
@@ -164,13 +167,13 @@
                                     </form>
                                 }
                                 <div class="seats">@InfoTicket.Places_Left_Text @ticket.Count</div>
-                </div>
+                            </div>
 
+                        </div>
+                    }
+                </div>
             </div>
-        }
-    </div>
-</div>
         </div>
-    </section>      
-        
+    </section>
+
 </div>

@@ -32,6 +32,10 @@ namespace AviaMare.Data
                 .HasMany(x => x.Buyers)
                 .WithOne(x => x.Ticket)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<TicketData>()
+                .HasMany(x => x.UsersWhoLikeIt)
+                .WithMany(x => x.TicketsWhichUsersLike);
         }
     }
 }

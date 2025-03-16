@@ -16,5 +16,7 @@ namespace AviaMare.Data.Models
         public int Count { get; set; }
 
         public virtual List<UserData> Buyers { get; set; } = new List<UserData>();
+
+        public virtual List<UserData> UsersWhoLikeIt { get; set; }
     }
 }

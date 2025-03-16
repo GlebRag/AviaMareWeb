@@ -395,6 +395,7 @@ video {
 #webcrumbs .min-h-full {
     min-height: 100%;
 }
+
 #webcrumbs .w-full {
     width: 100%;
 }
@@ -597,35 +598,36 @@ video {
 body {
     display: flex;
     flex-direction: column;
-    min-width: 100vh; 
+    min-width: 100vh;
     min-height: 100vh;
     background: linear-gradient(135deg, #ffffff, #d4d4d4);
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  line-height: 60px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    line-height: 60px;
 }
 
 .users {
     padding-bottom: 100vh;
     padding-top: 40px;
 }
-.users .role {
-    border: 1px red solid;
-    border-radius: 5px;
-    display: inline-block;
-    padding: 5px;
-}
 
-.users .roles {
-    border: 1px blue solid;
-    border-radius: 5px;
-    display: inline-block;
-    padding: 5px;
-}
+    .users .role {
+        border: 1px red solid;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 5px;
+    }
+
+    .users .roles {
+        border: 1px blue solid;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 5px;
+    }
 
 .loginAndRegister {
     display: block;
@@ -635,10 +637,12 @@ body {
     margin-top: 70px;
     margin-bottom: 115px;
 }
-.username{
+
+.username {
     border: 0px;
     width: 100%;
 }
+
 .password {
     border: 0px;
     width: 100%;
@@ -654,6 +658,7 @@ body {
     justify-content: center;
     margin-left: 20px;
 }
+
 .tickets {
     flex-wrap: wrap;
     height: 600px;
@@ -663,9 +668,11 @@ body {
     width: 1500px;
     display: flex;
 }
-.profile{
+
+.profile {
     height: 100vh;
 }
+
 .profile-tickets {
     flex-wrap: wrap;
     height: 600px;
@@ -674,6 +681,7 @@ body {
     justify-content: center;
     display: flex;
 }
+
 .ticket {
     background: #ffffff;
     border-radius: 10px;
@@ -764,4 +772,11 @@ body {
     background-repeat: no-repeat;
     background-position-x: 40px;
     background-position-y: bottom;
+}
+
+.ticket .ticket-header .icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }

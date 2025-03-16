@@ -11,5 +11,7 @@ namespace AviaMare.Data.Models
         public virtual TicketData? Ticket { get; set; }
 
         public Language Language { get; set; }
+
+        public virtual List<TicketData> TicketsWhichUsersLike { get; set; }
     }
 }

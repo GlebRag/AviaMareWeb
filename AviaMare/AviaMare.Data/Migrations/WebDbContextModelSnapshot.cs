@@ -45,7 +45,7 @@ namespace AviaMare.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Planes");
+                    b.ToTable("Planes", (string)null);
                 });
 
             modelBuilder.Entity("AviaMare.Data.Models.TicketData", b =>
@@ -84,7 +84,7 @@ namespace AviaMare.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
                 });
 
             modelBuilder.Entity("AviaMare.Data.Models.UserData", b =>
@@ -116,7 +116,7 @@ namespace AviaMare.Data.Migrations
 
                     b.HasIndex("TicketId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("AviaMare.Data.Models.UserData", b =>

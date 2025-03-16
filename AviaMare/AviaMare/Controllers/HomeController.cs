@@ -10,6 +10,7 @@ using AviaMare.Data.Interface.Models;
 using Enums.Users;
 using System.Globalization;
 using Azure.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AviaMare.Controllers
 {
@@ -188,12 +189,6 @@ namespace AviaMare.Controllers
             return View(viewModel);
         }
 
-        [HttpGet]
-        public IActionResult Remove(int id)
-        {
-            _ticketRepository.Delete(id);
-            return RedirectToAction("Index");
-        }
 
         [IsAuthenticated]
         public IActionResult UpdateLocale(Language language)
