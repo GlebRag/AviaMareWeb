@@ -13,31 +13,70 @@ namespace AviaMare.CustomMiddleWares
         {
             _next = next;
         }
+
+
         public async Task InvokeAsync(HttpContext context)
         {
             var authService = context.RequestServices.GetRequiredService<AuthService>();
             var userRepositoryReal = context.RequestServices.GetRequiredService<IUserRepositryReal>();
+
             if (authService.IsAuthenticated())
             {
                 var user = userRepositoryReal.Get(authService.GetUserId()!.Value)!;
-                CultureInfo culture;
-                switch (user.Language)
+                SwitchLanguage(user.Language);
+                await _next.Invoke(context);
+                return;
+            }
+
+            var langFromCookies = context.Request.Cookies["lang"];
+            if (langFromCookies != null)
+            {
+                var lang = Enum.Parse<Language>(langFromCookies);
+                SwitchLanguage(lang);
+                await _next.Invoke(context);
+                return;
+            }
+
+            if (context.Request.Headers.ContainsKey("accept-language"))
+            {
+                var langFromHeader = context.Request.Headers["accept-language"].FirstOrDefault();
+                if (langFromHeader is not null)
                 {
-                    case Language.Ru:
-                        culture = new CultureInfo("ru-RU");
-                        break;
-                    case Language.En:
-                        culture = new CultureInfo("en-US");
-                        break;
-                    default:
-                        throw new Exception("Unknow language");
+                    var localeStrCode = langFromHeader.Substring(0, 5);
+                    var culture = new CultureInfo(localeStrCode);
+                    SwitchLanguage(culture);
+                    await _next.Invoke(context);
+                    return;
                 }
 
-                Thread.CurrentThread.CurrentCulture = culture;
-                Thread.CurrentThread.CurrentUICulture = culture;
             }
 
             await _next.Invoke(context);
         }
+        private void SwitchLanguage(Language language)
+        {
+            CultureInfo culture;
+
+            switch (language)
+            {
+                case Language.Ru:
+                    culture = new CultureInfo("ru-RU");
+                    break;
+                case Language.En:
+                    culture = new CultureInfo("en-US");
+                    break;
+                default:
+                    throw new Exception("Unknown languge");
+            }
+
+            SwitchLanguage(culture);
+        }
+        private void SwitchLanguage(CultureInfo culture)
+        {
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+        }
+
     }
 }
+

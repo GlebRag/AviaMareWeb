@@ -61,6 +61,18 @@
                             Ru
                         </a>
                     }
+                    else
+                    {
+                        <a href="#" data-lang="@Language.En"
+                           class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200 unauth-lang">
+                            En
+                        </a>
+                        <a href="#" data-lang="@Language.Ru"
+                           class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200 unauth-lang">
+                            Ru
+                        </a>
+
+                    }
                     <a href="/Home/Profile"
                        class="text-neutral-950 hover:text-orange-500 py-2 px-4 rounded-md bg-orange-200">
                         @MainPage.Profile_Button_Text
@@ -90,6 +102,7 @@
             <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
             <script src="~/js/site.js" asp-append-version="true"></script>
             <script src="~/js/Index/Index.js" asp-append-version="true"></script>
+            <script src="~/js/language.js" asp-append-version="true"></script>
             @await RenderSectionAsync("Scripts", required: false)
         </div>
     </div>
