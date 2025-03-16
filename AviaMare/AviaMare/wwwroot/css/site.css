@@ -672,6 +672,11 @@ body {
     height: 100vh;
 }
 
+    .profile .avatar {
+        max-height: 200px;
+        max-width: 200px;
+    }
+
 .profile-tickets {
     flex-wrap: wrap;
     height: 600px;

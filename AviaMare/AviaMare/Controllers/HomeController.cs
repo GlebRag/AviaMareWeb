@@ -20,15 +20,18 @@ namespace AviaMare.Controllers
         private ITicketRepositoryReal _ticketRepository;
         private IUserRepositryReal _userRepositryReal;
         private WebDbContext _webDbContext;
+        private IWebHostEnvironment _webHostEnvironment;
         public HomeController(ITicketRepositoryReal ticketRepository,
             WebDbContext webDbContext,
             IUserRepositryReal userRepositryReal,
-            AuthService authService)
+            AuthService authService,
+            IWebHostEnvironment webHostEnvironment)
         {
             _ticketRepository = ticketRepository;
             _webDbContext = webDbContext;
             _userRepositryReal = userRepositryReal;
             _authService = authService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -178,7 +181,7 @@ namespace AviaMare.Controllers
 
             var userId = _authService.GetUserId()!.Value;
 
-            //viewModel.AvatarUrl = _userRepositryReal.GetAvatarUrl(userId);
+            viewModel.AvatarUrl = _userRepositryReal.GetAvatarUrl(userId);
 
             var ticketForUser = _ticketRepository.GetTicket(userId);
             if (ticketForUser.All(ticket => ticket == null))
@@ -200,7 +203,28 @@ namespace AviaMare.Controllers
             return View(viewModel);
         }
 
+        [IsAuthenticated]
+        [HttpPost]
+        public IActionResult UpdateAvatar(IFormFile avatar)
+        {
+            var webRootPath = _webHostEnvironment.WebRootPath;
 
+            var userId = _authService.GetUserId();
+            var avatarFileName = $"avatar-{userId}.jpg";
+
+            var path = Path.Combine(webRootPath, "images", "avatars", avatarFileName);
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                avatar
+                    .CopyToAsync(fileStream)
+                    .Wait();
+            }
+
+            var avatarUrl = $"/images/avatars/{avatarFileName}";
+            _userRepositryReal.UpdateAvatarUrl(userId, avatarUrl);
+
+            return RedirectToAction("Profile");
+        }
 
         [IsAuthenticated]
         public IActionResult UpdateLocale(Language language)

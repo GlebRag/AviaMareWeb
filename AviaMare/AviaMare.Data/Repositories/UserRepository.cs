@@ -9,11 +9,13 @@ namespace AviaMare.Data.Repositories
 {
     public interface IUserRepositryReal : IUserRepositry<UserData>
     {
+        string GetAvatarUrl(int userId);
         bool IsAdminExist();
         bool IsLoginAndPasswordIsCorrect(string login, string password);
         bool IsLoginUniq(string name);
         UserData? Login(string login, string password);
         void Register(string login, string password, Role role = Role.User);
+        void UpdateAvatarUrl(int? userid, string avatarUrl);
         void UpdateLocal(int? userId, Language language);
         void UpdateRole(int userId, Role role);
     }
@@ -29,12 +31,16 @@ namespace AviaMare.Data.Repositories
             throw new NotImplementedException("User method Register to create a new User");
         }
 
+        public string GetAvatarUrl(int userId)
+        {
+            return _dbSet.First(x => x.Id == userId).AvatarUrl;
+        }
 
         public bool IsAdminExist()
         {
             return _dbSet.Any(x => x.Role.HasFlag(Role.Admin));
         }
-        
+
         public bool IsLoginAndPasswordIsCorrect(string login, string password)
         {
             return !_dbSet.Any(x => x.Login == login) && !_dbSet.Any(x => x.Password == password);
@@ -60,10 +66,18 @@ namespace AviaMare.Data.Repositories
                 Login = login,
                 Password = BrokePassword(password),
                 Role = role,
+                AvatarUrl = "/images/avatars/default.png",
                 Language = Language.Ru
             };
 
             _dbSet.Add(user);
+            _webDbContext.SaveChanges();
+        }
+
+        public void UpdateAvatarUrl(int? userId, string avatarUrl)
+        {
+            var user = _dbSet.First(x => x.Id == userId);
+            user.AvatarUrl = avatarUrl;
             _webDbContext.SaveChanges();
         }
 
@@ -83,7 +97,7 @@ namespace AviaMare.Data.Repositories
             _webDbContext.SaveChanges();
         }
 
-        
+
         private string BrokePassword(string originalPassword)
         {
             // jaaaack

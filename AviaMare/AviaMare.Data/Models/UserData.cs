@@ -7,6 +7,7 @@ namespace AviaMare.Data.Models
     {
         public string Login { get; set; }
         public string Password { get; set; }
+        public string AvatarUrl { get; set; }
         public Role Role { get; set; }
         public virtual TicketData? Ticket { get; set; }
 
@@ -14,5 +15,6 @@ namespace AviaMare.Data.Models
 
         public virtual List<TicketData> TicketsWhichUsersLike { get; set; }
         public virtual List<ChatMessageData> ChatMessages { get; set; } = new();
+
     }
 }
