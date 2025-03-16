@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace AviaMare.Data.Interface.Models
 {
-    public interface ITicket : IBaseModel
+    public interface ITicketData : IBaseModel
     {
         public string Destination { get; set; }
         public string Departure { get; set; }

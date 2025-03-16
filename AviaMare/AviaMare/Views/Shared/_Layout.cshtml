@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AviaMare.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/icon.css" asp-append-version="true" />
+
     @RenderSection("Styles", false)
 </head>
 <body>
@@ -31,6 +32,10 @@
                 <nav class="flex gap-6">
                     <a href="/" class="text-neutral-950 hover:text-orange-500">@MainPage.Main_Button_Text</a>
                     <a href="#" class="text-neutral-950 hover:text-orange-500">@MainPage.Flights_Button_Text</a>
+                    @if (authService.IsAuthenticated())
+                    {
+                        <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Home" asp-action="Chat">Отзывы</a>
+                    }
                     @if (!User.Identity?.IsAuthenticated ?? false)
                     {
                         <a class="text-neutral-950 hover:text-orange-500" asp-area="" asp-controller="Auth" asp-action="Login">@MainPage.Login_Button_Text</a>
@@ -100,6 +105,7 @@
             </footer>
             <script src="~/lib/jquery/dist/jquery.min.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
             <script src="~/js/site.js" asp-append-version="true"></script>
             <script src="~/js/Index/Index.js" asp-append-version="true"></script>
             <script src="~/js/language.js" asp-append-version="true"></script>

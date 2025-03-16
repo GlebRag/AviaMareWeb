@@ -14,6 +14,8 @@ namespace AviaMare.Data
         public DbSet<PlaneData> Planes { get; set; }
         public DbSet<TicketData> Tickets { get; set; }
 
+        public DbSet<ChatMessageData> ChatMessages { get; set; }
+
         public WebDbContext() { }
 
         public WebDbContext(DbContextOptions<WebDbContext> contextOptions)
@@ -36,6 +38,12 @@ namespace AviaMare.Data
             modelBuilder.Entity<TicketData>()
                 .HasMany(x => x.UsersWhoLikeIt)
                 .WithMany(x => x.TicketsWhichUsersLike);
+
+            modelBuilder.Entity<UserData>()
+                .HasMany(x => x.ChatMessages)
+                .WithOne(x => x.User)
+                .OnDelete(DeleteBehavior.SetNull);
+
         }
     }
 }

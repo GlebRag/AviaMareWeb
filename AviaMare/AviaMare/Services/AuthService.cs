@@ -22,7 +22,7 @@ namespace AviaMare.Services
             return GetUserId() is not null;
         }
 
-        public string? GetName()
+        public string GetName()
         {
             return GetClaimValue(CLAIM_TYPE_NAME) ?? "Гость";
         }

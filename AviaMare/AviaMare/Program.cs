@@ -2,6 +2,7 @@ using AviaMare.CustomMiddleWares;
 using AviaMare.Data;
 using AviaMare.Data.Interface.Repositories;
 using AviaMare.Data.Repositories;
+using AviaMare.Hubs;
 using AviaMare.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -31,8 +32,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<WebDbContext>(x => x.UseSqlServer(WebDbContext.CONNECTION_STRING));
 
+builder.Services.AddSignalR();
+
 builder.Services.AddScoped<IUserRepositryReal, UserRepository>();
 builder.Services.AddScoped<ITicketRepositoryReal, TicketRepository>();
+builder.Services.AddScoped<IChatMessageRepositoryReal, ChatMessageRepository>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<EnumHelper>();
@@ -63,6 +67,7 @@ app.UseAuthorization(); // May I?
 
 app.UseMiddleware<LocalizationMiddleWare>();
 
+app.MapHub<ChatHub>("/hub/chatMainPage");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

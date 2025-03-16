@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace AviaMare.Data.Models
 {
-    public class TicketData : BaseModel, ITicket
+    public class TicketData : BaseModel, ITicketData
     {
         public string Destination { get; set; }
         public string Departure { get; set; }

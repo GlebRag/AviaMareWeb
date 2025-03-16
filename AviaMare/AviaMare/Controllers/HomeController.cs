@@ -40,7 +40,9 @@ namespace AviaMare.Controllers
                 GenerateDefaultTicket();
             }
 
+
             var ticketsFromDb = _ticketRepository.GetAll();
+
             var ticketsViewModels = ticketsFromDb
                 .Select(dbTicket =>
                     new TicketViewModel
@@ -56,7 +58,9 @@ namespace AviaMare.Controllers
                         Count = dbTicket.Count
                     }
                 )
-                .ToList();  
+                .ToList();
+
+
 
             return View(ticketsViewModels);
         }
@@ -154,11 +158,18 @@ namespace AviaMare.Controllers
             return View();
         }
 
+        [IsAuthenticated]
+        public IActionResult Chat()
+        {
+
+            return View();
+        }
+
         public IActionResult Profile()
         {
             if (!_authService.IsAuthenticated())
             {
-                return RedirectToAction("Login", "Auth" );
+                return RedirectToAction("Login", "Auth");
             }
 
             var viewModel = new ProfileViewModel();
@@ -188,6 +199,7 @@ namespace AviaMare.Controllers
 
             return View(viewModel);
         }
+
 
 
         [IsAuthenticated]

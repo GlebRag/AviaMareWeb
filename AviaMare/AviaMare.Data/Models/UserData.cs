@@ -3,7 +3,7 @@ using AviaMare.Data.Interface.Models;
 
 namespace AviaMare.Data.Models
 {
-    public class UserData : BaseModel, IUser
+    public class UserData : BaseModel, IUserData
     {
         public string Login { get; set; }
         public string Password { get; set; }
@@ -13,5 +13,6 @@ namespace AviaMare.Data.Models
         public Language Language { get; set; }
 
         public virtual List<TicketData> TicketsWhichUsersLike { get; set; }
+        public virtual List<ChatMessageData> ChatMessages { get; set; } = new();
     }
 }

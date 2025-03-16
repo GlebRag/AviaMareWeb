@@ -11,12 +11,12 @@ namespace AviaMare.Controllers.ApiControllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class ApiHomeController : ControllerBase
+    public class ApiTicketsController : ControllerBase
     {
         private ITicketRepositoryReal _ticketRepository;
         private AuthService _authService;
 
-        public ApiHomeController(ITicketRepositoryReal ticketRepository, AuthService authService)
+        public ApiTicketsController(ITicketRepositoryReal ticketRepository, AuthService authService)
         {
             _ticketRepository = ticketRepository;
             _authService = authService;

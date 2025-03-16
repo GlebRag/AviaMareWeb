@@ -3,7 +3,7 @@
 namespace AviaMare.Data.Interface.Repositories
 {
     public interface IPlaneRepository<T> : IBaseRepository<T>
-        where T : IPlane
+        where T : IPlaneData
     {
     }
 }
