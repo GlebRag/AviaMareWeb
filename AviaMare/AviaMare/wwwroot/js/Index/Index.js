@@ -5,7 +5,7 @@
     $(".tag.delete").click(function (event) {
         const ticketBlock = $(this).closest(".ticket");
         const ticketId = $(this).attr("data-id");
-        const url = `/api/ApiHome/Remove?id=${ticketId}`;
+        const url = `/api/ApiTickets/Remove?id=${ticketId}`;
         $.get(url).then(function (response) {
             if (response) {
                 ticketBlock.remove();
